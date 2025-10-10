@@ -231,7 +231,7 @@ function CasePage() {
           <TabsList className="before:bg-border relative px-4 py-0 h-auto w-full gap-0.5 bg-transparent before:absolute before:inset-x-0 before:bottom-0 before:h-px">
             <TabsTrigger
               value="tab-timeline"
-              className="w-full bg-surface-container-low data-[state=active]:bg-surface-container overflow-hidden rounded-b-none border-x border-t py-2 data-[state=active]:z-10 data-[state=active]:shadow-none"
+              className="w-full bg-surface-container-low data-[state=active]:bg-surface-container overflow-hidden rounded-b-none border-x border-t py-2 data-[state=active]:z-10 data-[state=active]:shadow-none data-[state=active]:text-on-surface text-muted-foreground"
             >
               <ChartNoAxesGantt
                 className="-ms-0.5 me-1.5 opacity-60"
@@ -242,7 +242,7 @@ function CasePage() {
             </TabsTrigger>
             <TabsTrigger
               value="tab-files"
-              className="w-full bg-surface-container-low overflow-hidden rounded-b-none border-x border-t py-2 data-[state=active]:z-10 data-[state=active]:shadow-none data-[state=active]:bg-surface-container"
+              className="w-full bg-surface-container-low overflow-hidden rounded-b-none border-x border-t py-2 data-[state=active]:z-10 data-[state=active]:shadow-none data-[state=active]:bg-surface-container data-[state=active]:text-on-surface text-muted-foreground"
             >
               <Files
                 className="-ms-0.5 me-1.5 opacity-60"
