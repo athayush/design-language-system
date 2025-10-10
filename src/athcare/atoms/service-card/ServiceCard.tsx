@@ -100,7 +100,7 @@ function ServiceCard({
                             <Avatar className="size-10 cursor-pointer">
                                 <AvatarImage src="/public/images/placeholder-lg.svg " />
                                 <AvatarFallback className="text-primary text-xs">
-                                    Praveen Singh
+                                    AK
                                 </AvatarFallback>
                             </Avatar>
                             <div>
@@ -267,7 +267,7 @@ function ServiceCard({
                         </ul>
                     </div>
                 </TimelineContent>
-                <div className="text-end">
+                <div className="text-end mb-2">
     
                         <DoctorDetails serviceDetailId={+service.id!}>
                             <Button>View Details</Button>
