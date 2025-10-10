@@ -4,7 +4,7 @@ import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "./_cva-variants"
+import { buttonVariants } from "@/general/atoms/button/buttonVariants"
 
 export function Button({
   className,
