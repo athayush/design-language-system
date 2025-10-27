@@ -26,7 +26,7 @@ type Story = StoryObj<typeof AttachedFiles>;
 export const Default: Story = {
   args: {
     fileNumber: 3,
-    children: <Button variant="outline">View Attached Files</Button>,
+    children: <Button>View Attached Files</Button>,
   },
   render: (args) => (
     <AttachedFiles {...args}>
