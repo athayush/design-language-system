@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FilePenLineIcon } from "lucide-react";
-import { Drawer } from "@/general/atoms/drawer/Drawer"; 
-import { Section } from "@/general/atoms/section/Section"; 
+import { Drawer } from "@/general/atoms/drawer/Drawer";
+import { Section } from "@/general/atoms/section/Section";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
@@ -15,7 +15,7 @@ type EditCaseFormSheetProps = {
 
 export function EditCaseFormSheet({ medicalCase }: EditCaseFormSheetProps) {
   const summaryByUser = medicalCase?.summary.find((item) => item.by === "User");
-
+  const [open, setOpen] = useState(false);
   const [title, setTitle] = useState(summaryByUser?.title ?? "");
   const [brief, setBrief] = useState(summaryByUser?.brief ?? "");
   const [tags, setTags] = useState(medicalCase?.tagsBySubscriber ?? []);
@@ -31,11 +31,11 @@ export function EditCaseFormSheet({ medicalCase }: EditCaseFormSheetProps) {
 
   return (
     <Drawer
-      id="storybook-edit-case-form"
       title="Edit Case Details"
       icon={FilePenLineIcon}
       iconSize={20}
-      open 
+      open={open}
+      onOpenChange={setOpen}
       button={{
         variant: "ghost",
       }}

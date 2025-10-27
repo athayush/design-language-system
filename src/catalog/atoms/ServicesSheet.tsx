@@ -6,14 +6,17 @@ import {
 } from "lucide-react";
 
 import { Drawer, DrawerClose } from "@/general/atoms/drawer/Drawer"
+import { useState } from "react";
 
 
 
 export function ServicesSheet() {
+    const [open, setOpen] = useState(false);
     return (
         <>
             <Drawer
-                id="services-sheet"
+                open={open}
+                onOpenChange={setOpen}
                 title="Services"
                 description="A range of services we provide."
                 icon={CirclePlus}
