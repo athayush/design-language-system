@@ -20,7 +20,7 @@ type UserPreviewProfileCardProps = {
 
 export function UserPreviewProfileCard({ children, name, username, email, avatar = "/public/images/placeholder-lg.svg", subscription = "Free", healthScore = 0 }: UserPreviewProfileCardProps) {
   return (
-    <Card className="relative shadow-none border-none bg-surface-container text-on-surface m-4 py-4 inset-shadow">
+    <Card className="relative shadow rounded-lg border-none bg-primary-container text-on-primary-container m-4 py-4 inset-shadow">
       <CardContent className="px-4">
         <div className="flex gap-6 items-center">
           <ProgressAvatar src={avatar} alt="Avatar" fallback={name.split(" ").at(0) ?? ""} progress={healthScore} />

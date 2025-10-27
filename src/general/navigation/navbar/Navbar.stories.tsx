@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Home, Search, Heart, User } from "lucide-react";
+import { Home, Search, Clock, CircleUserRound} from "lucide-react";
 import { Navbar, NavbarItem } from "./Navbar";
 
 const meta = {
@@ -25,10 +25,10 @@ export const Default: Story = {
         <NavbarItem href="#" icon={Search}>
           Search
         </NavbarItem>
-        <NavbarItem href="#" icon={Heart}>
-          Favorites
+        <NavbarItem href="#" icon={Clock}>
+          Tracker
         </NavbarItem>
-        <NavbarItem href="#" icon={User}>
+        <NavbarItem href="#" icon={CircleUserRound}>
           Profile
         </NavbarItem>
       </Navbar>

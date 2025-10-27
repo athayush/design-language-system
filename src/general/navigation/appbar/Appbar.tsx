@@ -6,7 +6,7 @@ export function AppBar({ className, ...props }: React.ComponentProps<"section">)
   return (
     <section
       className={cn(
-        "sticky inset-x-0 top-0 z-50 w-dvw text-on-surface shadow-2xs gap-4 border-b-2 bg-surface-container",
+        "sticky inset-x-0 top-0 z-50 w-dvw text-on-surface shadow-2xs gap-4 border-b-2 bg-surface",
         className,
       )}
       {...props}
@@ -77,7 +77,7 @@ export function AppBarSubMenu({
 }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn("flex items-center px-6 py-3", className)}
+      className={cn("flex items-center px-6 py-3 w-full", className)}
       {...props}
     />
   );

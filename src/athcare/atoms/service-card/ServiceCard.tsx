@@ -49,7 +49,7 @@ function ServiceCard({
                         <TimelineDate className="m-0">
                             {(new Date).toLocaleDateString()}
                         </TimelineDate>
-                        {service.status === "completed"
+                        {service.status === "Completed"
                             ? (
                                 <Badge variant="outline" className={{ badge: "gap-1 text-on-surface" }}>
                                     <Check
@@ -65,6 +65,7 @@ function ServiceCard({
                                     <span
                                         className={cn("size-1.5 rounded-full", {
                                             "bg-gray-500": service.status.includes("Initiated"),
+                                             "bg-blue-500": service.status.includes("In Progress"),
                                             "bg-emerald-500": service.status.includes("Confirmed"),
                                             "bg-amber-500": service.status.includes("Ongoing"),
                                             "bg-orange-500 rounded-xs": service.status.includes("Rescheduled"),
@@ -83,7 +84,7 @@ function ServiceCard({
                         <div className="flex items-center gap-3 border rounded-xl shadow-xs p-2 px-3">
                             <Avatar className="size-10 cursor-pointer">
                                 <AvatarImage src="" />
-                                <AvatarFallback className="text-primary text-xs">
+                                <AvatarFallback className="text-primary   text-xs">
                                     CM
                                 </AvatarFallback>
                             </Avatar>
