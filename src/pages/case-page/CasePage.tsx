@@ -133,7 +133,7 @@ const dummyAthCareServiceDetails: PGAthCareServiceDetail[] = [
     transactionId: 9002,
     subscriberCrn: 9876,
     initiationLocation: { x: 28.6139, y: 77.2090 },
-    status: "Scheduled",
+    status: "Rescheduled",
     personnelTypeId: 2,
     personnelJourneyId: 102,
     caseManagerSummary: "Scheduled a follow-up MRI scan as per protocol.",
@@ -158,18 +158,18 @@ function CasePage() {
             section: "px-4  pb-1 mx-0 grid grid-cols-1 gap-3 bg-surface-container",
           }}
         >
-          <div className="flex gap-4 items-baseline">
+          <div className="flex gap-4 items-start">
             <UserAvatar
               name={"User"}
               profileUrl="#"
               altText={"User"}
               className={{
-                avatar: "size-12 mt-3",
+                avatar: "size-12 mt-2",
               }}
             />
             <div className="space-y-1">
               <div>
-                <h2 className="font-bold text-lg">
+                <h2 className="font-bold text-lg mt-1">
                  Treatment For Frequent Headache
                 </h2>
                 <ul className="list-disc list-inside flex items-center gap-6 justify-between text-xs text-on-surface-variant">
@@ -231,7 +231,7 @@ function CasePage() {
           <TabsList className="before:bg-border relative px-4 py-0 h-auto w-full gap-0.5 bg-transparent before:absolute before:inset-x-0 before:bottom-0 before:h-px">
             <TabsTrigger
               value="tab-timeline"
-              className="w-full bg-surface-container-low data-[state=active]:bg-surface-container overflow-hidden rounded-b-none border-x border-t py-2 data-[state=active]:z-10 data-[state=active]:shadow-none data-[state=active]:text-on-surface text-muted-foreground"
+              className="w-full bg-surface data-[state=active]:bg-surface-container overflow-hidden rounded-b-none border-x border-t py-2 data-[state=active]:z-10 data-[state=active]:shadow-none data-[state=active]:text-on-surface text-muted-foreground"
             >
               <ChartNoAxesGantt
                 className="-ms-0.5 me-1.5 opacity-60"
@@ -242,7 +242,7 @@ function CasePage() {
             </TabsTrigger>
             <TabsTrigger
               value="tab-files"
-              className="w-full bg-surface-container-low overflow-hidden rounded-b-none border-x border-t py-2 data-[state=active]:z-10 data-[state=active]:shadow-none data-[state=active]:bg-surface-container data-[state=active]:text-on-surface text-muted-foreground"
+              className="w-full bg-surface overflow-hidden rounded-b-none border-x border-t py-2 data-[state=active]:z-10 data-[state=active]:shadow-none data-[state=active]:bg-surface-container data-[state=active]:text-on-surface text-muted-foreground"
             >
               <Files
                 className="-ms-0.5 me-1.5 opacity-60"

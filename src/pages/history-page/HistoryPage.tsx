@@ -3,7 +3,8 @@ import z from "zod"
 import { MedicalCase } from "@/athcare/atoms/medical-case/MedicalCase";
 import { Timeline } from "@/components/ui/timeline";
 import { Section } from "@/general/atoms/section/Section";
-import { ProfileLayout } from "@/general/templates/profile-layout.tsx/ProfileLayout";
+import { ProfileLayout } from "@/general/templates/profile-layout/ProfileLayout";
+import { EmptyStateCard } from "@/general/cards/empty-state-cards/EmptyStateCard";
 
 export type PGAthCareCase = z.infer<typeof pgAthCareCaseSchema>;
 
@@ -18,20 +19,21 @@ const caseSummary = z.object({
 });
 
 const pgAthCareCaseSchema = z.object({
-    createdAt: z.iso.datetime({ offset: true }).optional(),
-    updatedAt: z.iso.datetime({ offset: true }).optional(),
-    deletedAt: z.iso.datetime({ offset: true }).optional().nullable(),
-    id:  z.uuid("Invalid UUID format").optional(),
-    userSubscriptionId: z.number().int("Must be an integer").positive(),
-    subscriberCrn: z.number().int("Must be an integer").positive(),
-    treatmentFor: z.string(),
-    summary: z.array(caseSummary),
-    tags: z.array(z.string(),),
-    tagsBySubscriber: z.array(z.string()),
-    metadata: z.any().optional().nullable(),
+  createdAt: z.iso.datetime({ offset: true }).optional(),
+  updatedAt: z.iso.datetime({ offset: true }).optional(),
+  deletedAt: z.iso.datetime({ offset: true }).optional().nullable(),
+  id: z.uuid("Invalid UUID format").optional(),
+  userSubscriptionId: z.number().int("Must be an integer").positive(),
+  subscriberCrn: z.number().int("Must be an integer").positive(),
+  treatmentFor: z.string(),
+  summary: z.array(caseSummary),
+  tags: z.array(z.string(),),
+  tagsBySubscriber: z.array(z.string()),
+  metadata: z.any().optional().nullable(),
 });
 
- const dummyCareCases: PGAthCareCase[] = [
+// eslint-disable-next-line react-refresh/only-export-components
+export const dummyCareCases: PGAthCareCase[] = [
   {
     createdAt: "2025-10-01T10:00:00.000Z",
     updatedAt: "2025-10-08T14:30:00.000Z",
@@ -86,20 +88,30 @@ const pgAthCareCaseSchema = z.object({
   }
 ];
 
-function HistoryPage() {
-    return (
-        <ProfileLayout>
-            <Section className={{ section: "p-4 m-0 bg-surface-container text-on-surface" }}>
-                <Timeline>
-                    {dummyCareCases.length > 0
-                        ? dummyCareCases.map(mediCase => (
-                            <MedicalCase key={mediCase.id} mediCase={mediCase} idx={0} />
-                        ))
-                        : <p>No case created yet.</p>}
-                </Timeline>
-            </Section>
-        </ProfileLayout>
-    )
+type HistoryPageProps = {
+  careCases?: PGAthCareCase[]
+};
+
+const handleAppointment = () => {
+  console.log("Book Appointment Clicked");
+};
+
+function HistoryPage({ careCases = dummyCareCases }: HistoryPageProps) {
+  return (
+    <ProfileLayout>
+      <Section className={{ section: "p-4 m-0 bg-surface-container text-on-surface" }}>
+        <Timeline>
+          {careCases.length > 0
+            ? careCases.map((mediCase, index) => (
+              <MedicalCase key={mediCase.id} mediCase={mediCase} idx={index} />
+            ))
+            : <EmptyStateCard
+              onAction={handleAppointment}
+            />}
+        </Timeline>
+      </Section>
+    </ProfileLayout>
+  );
 }
 
-export { HistoryPage }
+export { HistoryPage };
