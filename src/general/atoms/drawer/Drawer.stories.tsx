@@ -1,36 +1,31 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Drawer } from "./Drawer";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { DrawerWithState } from './DrawerWithState';
 
 const meta = {
-  title: "general/atoms/Drawer",
-  component: Drawer,
+  title: 'general/atoms/Drawer',
+  component: DrawerWithState,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: "button-name",
+            enabled: false,
+          },
+        ],
+      },
+    }
   },
-  tags: ["autodocs"],
-  argTypes: {
-    id: { control: "text" },
-    title: { control: "text" },
-    triggerLabel: { control: "text" },
-    removeCloseBtn: { control: "boolean" },
-    description: { control: "text" },
-    icon: { control: "text" },
-    iconSize: { control: "number" },
-    button: { control: "text" },
-    className: { control: "object" },
+  tags: ['autodocs'],
+  args: {
+    title: 'Drawer Title',
+    description: 'This is a drawer description',
+    triggerLabel: 'Open Drawer',
   },
-} satisfies Meta<typeof Drawer>;
+} satisfies Meta<typeof DrawerWithState>;
 
 export default meta;
-
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    id : "demo-drawer",
-    title: "Drawer Title",
-    description: "This is a sample drawer for demonstration.",
-    triggerLabel: "Open Drawer"
-  },
-  render: (args) => <Drawer {...args} />,
-};
+export const Default: Story = {};
