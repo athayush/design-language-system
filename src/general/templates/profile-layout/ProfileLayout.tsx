@@ -8,7 +8,8 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { Layout } from "../layout/Layout"; 
+import { motion } from "motion/react";
+import { Layout } from "../layout/Layout";
 import { AppBar, AppBarHeader, AppBarSubMenu } from "@/general/navigation/appbar/Appbar";
 import { AthCareNavbar } from "@/general/navigation/navbar/AthcareNavbar";
 import { UserCombobox } from "@/general/atoms/user-combobox/UserCombobox";
@@ -36,17 +37,20 @@ const user = {
 }
 
 const profileTabs = [{
-  label: "Profile"
+  label: "Profile",
+  isActive: false,
 },
 {
-  label: "History"
+  label: "History",
+  isActive: false,
 },
 {
-  label: "Docs"
-}
-]
+  label: "Docs",
+  isActive: false,
+}]
 
 export function ProfileLayout({ children, actions }: ProfileLayoutProps) {
+  const [activeTab, setActiveTab] = React.useState<string>("History");
   const [selectedOption] = React.useState<string | null>(user.id);
   const [options] = React.useState<Option[]>([{
     value: user.id,
@@ -54,6 +58,8 @@ export function ProfileLayout({ children, actions }: ProfileLayoutProps) {
     relation: user.email,
     profilePictureUrl: "",
   }]);
+
+
 
   return (
     <Layout>
@@ -64,7 +70,7 @@ export function ProfileLayout({ children, actions }: ProfileLayoutProps) {
               options={options}
               value={selectedOption!}
               onClick={() => { }}
-              triggerClassName="w-full flex-1 bg-surface-dim/30 hover:bg-surface-container-lowest"
+              triggerClassName="w-full h-14 flex-1 bg-primary rounded-xl text-on-primary hover:text-on-primary hover:bg-primary"
             >
               <Command>
                 <CommandInput placeholder="Filter option..." />
@@ -81,14 +87,32 @@ export function ProfileLayout({ children, actions }: ProfileLayoutProps) {
             {actions}
           </div>
         </AppBarHeader>
-        <AppBarSubMenu className="justify-around px-16">
-          {profileTabs.map(option => (
-            <span
-              key={option.label}
-            >
-              {option.label}
-            </span>
-          ))}
+        <AppBarSubMenu className="relative grid grid-cols-3 gap-1 rounded-full bg-primary/10 p-1 mb-1 overflow-hidden">
+          {profileTabs.map((option) => {
+            const isActive = activeTab === option.label;
+            return (
+              <div
+                key={option.label}
+                onClick={() => setActiveTab(option.label)}
+                className="relative text-center py-2 rounded-full text-xs cursor-pointer font-medium"
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTabIndicator"
+                    className="absolute inset-0 rounded-full bg-primary"
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 30
+                    }}
+                  />
+                )}
+                <span className={isActive ? "relative text-on-primary font-semibold" : "relative text-primary"}>
+                  {option.label}
+                </span>
+              </div>
+            );
+          })}
         </AppBarSubMenu>
       </AppBar>
       <div className="space-y-6 relative">
