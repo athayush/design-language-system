@@ -38,7 +38,11 @@ const mockCartItems = [
   },
 ];
 
-function ShoppingCartSheet() {
+type ShoppingCartSheetProps = {
+  trigger? : React.ReactNode
+}
+
+function ShoppingCartSheet({trigger} : ShoppingCartSheetProps) {
   const [items, setItems] = useState(mockCartItems);
 
   const updateQuantity = (id: number, quantity: number) => {
@@ -62,16 +66,17 @@ function ShoppingCartSheet() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="relative">
-          <ShoppingCart />
+        {
+          trigger ? trigger : <Button variant="outline" size="icon" className="relative">
+          <ShoppingCart size={24} />
           {getItemCount() > 0 && (
-            <span className="absolute z-10 top-0.5 right-0.5 p-0.5 rounded-full bg-primary text-background text-[8px]">
+            <span className="absolute z-10 top-0.5 right-0.5 p-0.5 rounded-full !w-4 bg-primary text-background text-[8px]">
               {getItemCount()}
             </span>
           )}
         </Button>
+        }
       </SheetTrigger>
-
       <SheetContent className="w-full sm:max-w-md">
         <SheetHeader className="pb-0">
           <div className="flex items-center gap-2.5">
