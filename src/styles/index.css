@@ -14,7 +14,7 @@
   --card-foreground: hsl(222.2 84% 4.9%);
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(222.2 84% 4.9%);
-  --primary: hsl(222.2 47.4% 11.2%);
+  --primary: hsl(222.2 47.4% 11.2%); 
   --primary-foreground: hsl(210 40% 98%);
   --secondary: hsl(210 40% 96.1%);
   --secondary-foreground: hsl(222.2 47.4% 11.2%);
@@ -49,7 +49,6 @@
   --on-primary: light-dark(#ffffff, #122f60);
   --primary-container: light-dark(#fff, #2c4678);
   --on-primary-container: light-dark(#2c4678, #d8e2ff);
-
 
   --secondary: light-dark(#575e71, #bfc6dc);
   --on-secondary: light-dark(#ffffff, #293041);
@@ -115,7 +114,6 @@
 .dark {
   color-scheme: dark;
 }
-
 
 @theme {
   /* Ath Radius */
@@ -183,8 +181,6 @@
   --color-sidebar: var(--sidebar);
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
-
-
 
   /* Ath Theme */
   --color-primary: var(--primary);
@@ -268,7 +264,17 @@
       height: 0;
     }
   }
-}
+
+  --animate-aurora: aurora 60s linear infinite
+;
+  @keyframes aurora {
+  from {
+    backgroundPosition: 50% 50%, 50% 50%;
+    }
+  to {
+    backgroundPosition: 350% 50%, 350% 50%;
+    }
+  }}
 
 @keyframes slideIn {
   0% {
