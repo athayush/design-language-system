@@ -21,7 +21,7 @@ export const buttonVariants = cva(
         errorContainer:
           "bg-error-container text-on-error-container shadow-xs hover:bg-error-container/90 focus-visible:ring-error-container/20 dark:focus-visible:ring-error-container/80",
         outline:
-          "border border-input bg-foreground shadow-xs hover:bg-accent hover:text-accent-foreground",
+          "border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-background",
         ghost: "hover:bg-surface-variant hover:text-on-surface-variant",
         link: "text-primary underline-offset-4 hover:underline",
       },

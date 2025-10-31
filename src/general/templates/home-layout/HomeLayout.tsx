@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "../layout/Layout";
 import { AppBar, AppBarHeader } from "@/general/navigation/appbar/Appbar";
 import { AthCareNavbar } from "@/general/navigation/navbar/AthcareNavbar";
+import { Icon } from "@/design-tokens/icon/Icon";
+import { Bell } from "lucide-react";
 
 type HomeLayoutProps = {
     children?: React.ReactNode;
@@ -21,6 +23,7 @@ function HomeLayout({ children, title = "AthAyush", subTitle }: HomeLayoutProps)
         <Layout>
             <AppBar>
                 <AppBarHeader title={title} subTitle={subTitle}>
+                    <Icon icon={Bell} className={{container: "bg-transparent border-primary shadow rounded-lg"}} />
                     {user.appRoles.includes("admin") && (
                         <Button asChild>
                             <a href="/admin">Admin Dashboard</a>

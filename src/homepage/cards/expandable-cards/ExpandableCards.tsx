@@ -125,11 +125,11 @@ export function ExpandableCards({
 
   return (
     <div
-      className={`flex w-full flex-col gap-4 overflow-scroll p-4 ${className}`}
+      className={`flex w-full flex-col gap-4 mt-4 overflow-scroll pl-4 ${className}`}
     >
       <div
         ref={scrollRef}
-        className="scrollbar-hide mx-auto flex overflow-x-auto pt-4 pb-8"
+        className="scrollbar-hide mx-auto flex overflow-x-auto pb-4"
         style={{
           scrollSnapType: "x mandatory",
           scrollPaddingLeft: "20%",
@@ -140,12 +140,12 @@ export function ExpandableCards({
             key={card.id}
             layout
             data-card-id={card.id}
-            className={`bg-background relative mr-4 h-[300px] flex-shrink-0 cursor-pointer overflow-hidden rounded-2xl border shadow-lg ${cardClassName}`}
+            className={`bg-background relative mr-4 h-[300px] flex-shrink-0 cursor-pointer overflow-hidden rounded-2xl border  ${cardClassName}`}
             style={{
               scrollSnapAlign: "start",
             }}
             animate={{
-              width: selectedCard === card.id ? "500px" : "200px",
+              width: selectedCard === card.id ? "350px" : "200px",
             }}
             transition={{
               duration: 0.5,
@@ -185,7 +185,7 @@ export function ExpandableCards({
                     duration: 0.5,
                     opacity: { duration: 0.3, delay: 0.2 },
                   }}
-                  className="bg-background absolute top-0 right-0 h-full"
+                  className="bg-background absolute top-0 right-12 h-full"
                 >
                   <motion.div
                     className="flex h-full flex-col justify-between p-8"
@@ -194,7 +194,7 @@ export function ExpandableCards({
                     exit={{ opacity: 0, x: 20, filter: "blur(5px)" }}
                     transition={{ delay: 0.4, duration: 0.3 }}
                   >
-                    <p className="text-primary-foreground text-sm">
+                    <p className="text-primary">
                       {card.content}
                     </p>
                     {card.author && (

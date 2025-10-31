@@ -150,7 +150,7 @@ function AutoCompleteSearchBar({
           onKeyDown={handleKeyDown}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          className={cn("px-10 bg-surface-container-lowest rounded-xl", className)}
+          className={cn("px-10 py-4 bg-surface-container-lowest rounded-xl shadow", className)}
           aria-label="Search input"
           aria-autocomplete="list"
           aria-controls="suggestions-list"

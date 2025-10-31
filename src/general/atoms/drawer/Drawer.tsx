@@ -96,7 +96,7 @@ export function Drawer({
                 {description && <DrawerDescription>{description}</DrawerDescription>}
               </DrawerHeader>
               <DrawerClose>
-                <CircleX size={24} />
+                <CircleX className="text-primary" size={24} />
               </DrawerClose>
             </div>
           )}
