@@ -207,202 +207,202 @@ function CheckoutPage() {
                     </Stepper>
                 </div>
                 <div className="grid grid-cols-1 gap-4 mb-6 lg:grid-cols-2">
-                        <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
-                            <div>
-                                <h2 className="mb-4 text-xl font-semibold">Contact Information</h2>
-                                <Label className="mb-1 text-base">Alternate Number</Label>
-                                <Input type="number" placeholder="8899889988" />
-                            </div>
-                            <div>
-                     <div className="flex items-center justify-between w-full">
-  <h2 className="text-xl font-semibold">Shipping Address</h2>
-  <div>
-    <Select onValueChange={handleSelect} value={selectedAddress}>
-      <SelectTrigger className="w-48 text-left !h-12">
-        <SelectValue placeholder="Select an address" />
-      </SelectTrigger>
-      <SelectContent className="-ml-4 w-full">
-        {addresses.map((addr) => (
-          <SelectItem key={addr.id} value={addr.id}>
-            <div className="flex flex-col text-sm">
-              <span className="font-semibold">{addr.label}</span>
-              {addr.address && (
-                <span className="text-muted-foreground text-sm line-clamp-2">
-                  {addr.address}, {addr.city}, {addr.state} - {addr.pinCode}
-                </span>
-              )}
-            </div>
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
-  </div>
-</div>
-                                <div className="mt-4">
-                                    <Label className="mb-1 text-base">Address</Label>
-                                    <Textarea
-                                        name="address"
-                                        value={formData.address}
-                                        onChange={handleChange}
-                                        disabled={!isEditable}
-                                        placeholder="D-1201, GVS, Noida 201301"
-                                    />
+                    <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+                        <div>
+                            <h2 className="mb-4 text-xl font-semibold">Contact Information</h2>
+                            <Label className="mb-1 text-base">Alternate Number</Label>
+                            <Input type="number" placeholder="8899889988" />
+                        </div>
+                        <div>
+                            <div className="flex items-center justify-between w-full">
+                                <h2 className="text-xl font-semibold">Shipping Address</h2>
+                                <div>
+                                    <Select onValueChange={handleSelect} value={selectedAddress}>
+                                        <SelectTrigger className="w-48 text-left !h-12">
+                                            <SelectValue placeholder="Select an address" />
+                                        </SelectTrigger>
+                                        <SelectContent className="-ml-4 w-full">
+                                            {addresses.map((addr) => (
+                                                <SelectItem key={addr.id} value={addr.id}>
+                                                    <div className="flex flex-col text-sm">
+                                                        <span className="font-semibold">{addr.label}</span>
+                                                        {addr.address && (
+                                                            <span className="text-muted-foreground text-sm line-clamp-2">
+                                                                {addr.address}, {addr.city}, {addr.state} - {addr.pinCode}
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
                                 </div>
-                                <div className="mt-4 grid grid-cols-1 gap-4">
-                                    <div className="flex gap-4">
-                                        <div className="flex-1">
-                                            <Label className="mb-1 text-base">City</Label>
-                                            <Input
-                                                name="city"
-                                                value={formData.city}
-                                                onChange={handleChange}
-                                                disabled={!isEditable}
-                                                placeholder="Noida"
-                                            />
-                                        </div>
-                                        <div className="flex-1">
-                                            <Label className="mb-1 text-base">State</Label>
-                                            <Input
-                                                name="state"
-                                                value={formData.state}
-                                                onChange={handleChange}
-                                                disabled={!isEditable}
-                                                placeholder="Uttar Pradesh"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <Label className="mb-1 text-base">PIN Code</Label>
+                            </div>
+                            <div className="mt-4">
+                                <Label className="mb-1 text-base">Address</Label>
+                                <Textarea
+                                    name="address"
+                                    value={formData.address}
+                                    onChange={handleChange}
+                                    disabled={!isEditable}
+                                    placeholder="D-1201, GVS, Noida 201301"
+                                />
+                            </div>
+                            <div className="mt-4 grid grid-cols-1 gap-4">
+                                <div className="flex gap-4">
+                                    <div className="flex-1">
+                                        <Label className="mb-1 text-base">City</Label>
                                         <Input
-                                            name="pinCode"
-                                            type="number"
-                                            value={formData.pinCode}
+                                            name="city"
+                                            value={formData.city}
                                             onChange={handleChange}
                                             disabled={!isEditable}
-                                            placeholder="201301"
+                                            placeholder="Noida"
+                                        />
+                                    </div>
+                                    <div className="flex-1">
+                                        <Label className="mb-1 text-base">State</Label>
+                                        <Input
+                                            name="state"
+                                            value={formData.state}
+                                            onChange={handleChange}
+                                            disabled={!isEditable}
+                                            placeholder="Uttar Pradesh"
                                         />
                                     </div>
                                 </div>
-                            </div>
-
-                            {/* Buttons */}
-                            <div className="flex items-center gap-4">
-                                <Button type="button" className="w-full" size="lg">
-                                    Make Payment
-                                </Button>
-                                <Button
-                                    type="button"
-                                    variant="accent"
-                                    className="py-5"
-                                    size="sm"
-                                    disabled={!isEditable}
-                                    onClick={handleSave}
-                                >
-                                    <House className="mr-2 h-4 w-4" /> Save
-                                </Button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div>
-                        <Card className="sticky top-8 gap-2 px-6 py-4">
-                            <h2 className="mb-4 text-xl font-semibold">Order Summary</h2>
-                            <div className="flex items-end justify-between gap-4">
-                                <div className="w-full">
-                                    <Label className="mb-1 text-base">Coupon Code</Label>
+                                <div>
+                                    <Label className="mb-1 text-base">PIN Code</Label>
                                     <Input
-                                        type="text"
-                                        placeholder="GVS1002"
-                                        value={couponInput}
-                                        onChange={(e) => setCouponInput(e.target.value)}
-                                        className="flex-1 w-full"
+                                        name="pinCode"
+                                        type="number"
+                                        value={formData.pinCode}
+                                        onChange={handleChange}
+                                        disabled={!isEditable}
+                                        placeholder="201301"
                                     />
                                 </div>
-                                <Button onClick={handleApply}>Apply</Button>
                             </div>
-                            <span className="text-xs  text-green-600 mb-4">*Your subscription code is applied successfully!</span>
-                            {items.length > 0 ? (
-                                <>
-                                    <div className="mb-6 space-y-4">
-                                        {items.map((item) => (
-                                            <div
-                                                key={item.id}
-                                                className="flex items-center space-x-4"
-                                            >
-                                                <img
-                                                    src={item.image}
-                                                    alt={item.title}
-                                                    className="h-16 w-16 rounded-lg object-cover"
-                                                />
-                                                <div className="flex-1">
-                                                    <h3 className="font-medium">{item.title}</h3>
-                                                    <p className="text-muted-foreground text-sm">
-                                                        Qty: {item.cartQuantity}
-                                                    </p>
-                                                </div>
-                                                <p className="font-medium">
-                                                    ₹{(item.price * item.cartQuantity).toFixed(2)}
+                        </div>
+
+                        {/* Buttons */}
+                        <div className="flex items-center gap-4">
+                            <Button type="button" className="w-full" size="lg">
+                                Make Payment
+                            </Button>
+                            <Button
+                                type="button"
+                                variant="accent"
+                                className="py-5"
+                                size="sm"
+                                disabled={!isEditable}
+                                onClick={handleSave}
+                            >
+                                <House className="mr-2 h-4 w-4" /> Save
+                            </Button>
+                        </div>
+                    </form>
+                </div>
+
+                <div>
+                    <Card className="sticky top-8 gap-2 px-6 py-4">
+                        <h2 className="mb-4 text-xl font-semibold">Order Summary</h2>
+                        <div className="flex items-end justify-between gap-4">
+                            <div className="w-full">
+                                <Label className="mb-1 text-base">Coupon Code</Label>
+                                <Input
+                                    type="text"
+                                    placeholder="GVS1002"
+                                    value={couponInput}
+                                    onChange={(e) => setCouponInput(e.target.value)}
+                                    className="flex-1 w-full"
+                                />
+                            </div>
+                            <Button onClick={handleApply}>Apply</Button>
+                        </div>
+                        <a href="#" className="text-xs  text-green-600 mb-4">*Your subscription code is applied successfully!</a>
+                        {items.length > 0 ? (
+                            <>
+                                <div className="mb-6 space-y-4">
+                                    {items.map((item) => (
+                                        <div
+                                            key={item.id}
+                                            className="flex items-center space-x-4"
+                                        >
+                                            <img
+                                                src={item.image}
+                                                alt={item.title}
+                                                className="h-16 w-16 rounded-lg object-cover"
+                                            />
+                                            <div className="flex-1">
+                                                <h3 className="font-medium">{item.title}</h3>
+                                                <p className="text-muted-foreground text-sm">
+                                                    Qty: {item.cartQuantity}
                                                 </p>
                                             </div>
-                                        ))}
-                                    </div>
-
-                                    {/* Totals */}
-                                    <div className="space-y-2 border-t pt-4">
-                                        <div className="flex justify-between">
-                                            <span>Subtotal</span>
-                                            <span>₹{subtotal.toFixed(2)}</span>
+                                            <p className="font-medium">
+                                                ₹{(item.price * item.cartQuantity).toFixed(2)}
+                                            </p>
                                         </div>
+                                    ))}
+                                </div>
 
-                                        {coupon && (
-                                            <div className="flex justify-between text-green-600">
-                                                <span>Discount ({coupon.code})</span>
-                                                <span>- ₹{discount.toFixed(2)}</span>
-                                            </div>
-                                        )}
-
-                                        <div className="flex justify-between">
-                                            <span>Shipping</span>
-                                            <span>{shipping === 0 ? "Free" : `₹${shipping}`}</span>
-                                        </div>
-
-                                        <div className="flex justify-between">
-                                            <span>Tax</span>
-                                            <span>₹{tax.toFixed(2)}</span>
-                                        </div>
-
-                                        <div className="flex justify-between border-t pt-2 text-lg font-semibold">
-                                            <span>Total</span>
-                                            <span className={coupon ? "line-through text-gray-500" : ""}>
-                                                ₹{subtotal + tax}
-                                            </span>
-                                        </div>
-
-                                        {coupon && (
-                                            <div className="flex justify-between text-lg font-semibold text-primary border-t py-2">
-                                                <span>Total After Discount</span>
-                                                <span>₹{total + tax}</span>
-                                            </div>
-                                        )}
+                                {/* Totals */}
+                                <div className="space-y-2 border-t pt-4">
+                                    <div className="flex justify-between">
+                                        <span>Subtotal</span>
+                                        <span>₹{subtotal.toFixed(2)}</span>
                                     </div>
 
                                     {coupon && (
-                                        <Button
-                                            variant="ghost"
-                                            className="text-sm text-red-500"
-                                            onClick={clearCoupon}
-                                        >
-                                            Remove Coupon
-                                        </Button>
+                                        <div className="flex justify-between text-green-600">
+                                            <span>Discount ({coupon.code})</span>
+                                            <span>- ₹{discount.toFixed(2)}</span>
+                                        </div>
                                     )}
-                                </>
-                            ) : (
-                                <p className="text-center">Your Cart Is Empty</p>
-                            )}
-                        </Card>
-                    </div>
+
+                                    <div className="flex justify-between">
+                                        <span>Shipping</span>
+                                        <span>{shipping === 0 ? "Free" : `₹${shipping}`}</span>
+                                    </div>
+
+                                    <div className="flex justify-between">
+                                        <span>Tax</span>
+                                        <span>₹{tax.toFixed(2)}</span>
+                                    </div>
+
+                                    <div className="flex justify-between border-t pt-2 text-lg font-semibold">
+                                        <span>Total</span>
+                                        <span className={coupon ? "line-through text-gray-500" : ""}>
+                                            ₹{subtotal + tax}
+                                        </span>
+                                    </div>
+
+                                    {coupon && (
+                                        <div className="flex justify-between text-lg font-semibold text-primary border-t py-2">
+                                            <span>Total After Discount</span>
+                                            <span>₹{total + tax}</span>
+                                        </div>
+                                    )}
+                                </div>
+
+                                {coupon && (
+                                    <Button
+                                        variant="ghost"
+                                        className="text-sm text-red-500"
+                                        onClick={clearCoupon}
+                                    >
+                                        Remove Coupon
+                                    </Button>
+                                )}
+                            </>
+                        ) : (
+                            <p className="text-center">Your Cart Is Empty</p>
+                        )}
+                    </Card>
                 </div>
-            
+            </div>
+
         </Layout>
     );
 }
