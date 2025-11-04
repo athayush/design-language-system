@@ -3,7 +3,7 @@
 import { Badge } from "@/general/atoms/badge/Badge"
 import { Section } from "@/general/atoms/section/Section"
 import type { Card } from "@/homepage/cards/expandable-cards/ExpandableCards"
-import {ExpandableCards} from "@/homepage/cards/expandable-cards/ExpandableCards"
+import { ExpandableCards } from "@/homepage/cards/expandable-cards/ExpandableCards"
 import { X } from "lucide-react"
 import { useState } from "react"
 
@@ -70,18 +70,18 @@ const ExpandableCardsCarousel = () => {
 
     return (
         <>
-        <Section title="Our Top Doctors" className={{section: "mx-0", title: "ml-4"}}>
-            <div className="flex flex-row mx-4 gap-2 flex-wrap">
-            {specialities.map((speciality) => (
-                    <Badge iconRight={X} variant={"outline"} key={speciality} className={{badge: " rounded-2xl"}}>{speciality}</Badge>
-                ))}
+            <Section title="Our Top Doctors" className={{ section: "mx-0", title: "ml-4" }}>
+                <div className="flex flex-row mx-4 gap-2 flex-wrap">
+                    {specialities.map((speciality) => (
+                        <Badge iconRight={X} variant={"outline"} key={speciality} className={{ badge: " rounded-2xl" }}>{speciality}</Badge>
+                    ))}
                 </div>
-        <ExpandableCards
-            cards={getDefaultCards}
-            selectedCard={selected}
-            onSelect={setSelected}
-        />
-        </Section>
+                <ExpandableCards
+                    cards={getDefaultCards}
+                    selectedCard={selected}
+                    onSelect={setSelected}
+                />
+            </Section>
         </>
     )
 }

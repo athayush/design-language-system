@@ -1,4 +1,4 @@
-function Banner1() {
+function Banner() {
   return (
     <div className="relative w-full max-w-4xl overflow-hidden rounded-[40px] bg-primary  p-6 sm:p-10 md:p-20">
       <div className="absolute inset-0  h-full w-full overflow-hidden block">
@@ -36,4 +36,4 @@ function Banner1() {
   );
 }
 
-export {Banner1}
+export {Banner}

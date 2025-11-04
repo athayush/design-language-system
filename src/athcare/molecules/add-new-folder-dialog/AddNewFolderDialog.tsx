@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Icon } from "@/design-tokens/icon/Icon";
 
 type AddNewFolderDialogProps = {
   open?: boolean;
@@ -30,13 +29,11 @@ export function AddNewFolderDialog({
   onCreate,
   isLoading = false,
 }: AddNewFolderDialogProps) {
-  
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
-        <Button variant="ghost" >
-          <Icon className={{ container: "bg-tertiary/15 p-3 shadow-sm hover:g-tertiary/15 hover:p-3 hover:shadow-sm", icon: "size-6" }} icon={FolderPlusIcon} />
-        </Button>
+        <Button variant="outline" size="icon" className="aspect-square size-12 rounded-full bg-secondary-container text-on-secondary-container"><FolderPlusIcon /></Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-md">

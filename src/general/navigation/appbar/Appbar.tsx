@@ -1,5 +1,5 @@
 import { Menu } from "lucide-react";
-import { Avatar } from "@/general/atoms/avatar/Avatar"
+import { UserAvatar } from "@/general/atoms/user-avatar/UserAvatar"
 import { cn } from "@/lib/utils"; 
 
 export function AppBar({ className, ...props }: React.ComponentProps<"section">) {
@@ -17,7 +17,7 @@ export function AppBar({ className, ...props }: React.ComponentProps<"section">)
 type AppBarHeaderProps = React.ComponentProps<"header"> & {
   title?: string;
   subTitle?: string;
-  image?: React.ComponentProps<typeof Avatar>;
+  image?: React.ComponentProps<typeof UserAvatar>;
 };
 
 export function AppBarHeader({
@@ -40,7 +40,7 @@ export function AppBarHeader({
               <div className="w-full flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   {image && (
-                    <Avatar
+                    <UserAvatar
                       {...image}
                       className={{
                         ...image.className,

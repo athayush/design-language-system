@@ -1,11 +1,11 @@
 import { Icon } from "@/design-tokens/icon/Icon";
 import { Section } from "@/general/atoms/section/Section";
 import { HomeLayout } from "@/general/templates/home-layout/HomeLayout";
-import { Banner1 } from "@/homepage/banner/banner1/Banner1";
+import { Banner } from "@/homepage/banner/banner1/Banner";
 import { FeaturedCard } from "@/homepage/cards/featured-card/FeaturedCard";
 import { ServiceCard } from "@/homepage/cards/service-card/ServiceCard";
 import { UpcomingAppointmentCard, type UpcomingAppointmentCardProps } from "@/homepage/cards/upcoming-appointment-card/UpcomingAppointmentCard";
-import { UserBriefCard } from "@/homepage/cards/user-brief-card/UserBriefCard";
+import { UserBriefCard, type subscriber } from "@/homepage/cards/user-brief-card/UserBriefCard";
 import { ExpandableCardsCarousel } from "@/homepage/carousels/expendable-card-carousel/ExpendableCardsCarousel";
 import { ProductShowcaseCarousel } from "@/homepage/carousels/product-showcase-carousel/ProductShowcaseCarousel";
 import { HomeFooter } from "@/homepage/footer/home-footer/HomeFooter";
@@ -152,7 +152,44 @@ const specialities: SpecialityCardProps[] = [
     }
 ]
 
+const mockSubscribers: subscriber[] = [
+    {
+        id: "1",
+        name: "Ankush Kumar",
+        username: "ankush123",
+        email: "ankush@example.com",
+        relation: "Self",
+        avatar: "https://i.pravatar.cc/150?img=1",
+        progress: 22,
+    },
+    {
+        id: "2",
+        name: "Priya Sharma",
+        username: "priya_s",
+        relation: "Wife",
+        avatar: "https://i.pravatar.cc/150?img=2",
+        progress: 65,
+    },
+    {
+        id: "3",
+        name: "Rohan Kumar",
+        username: "rohan_k",
+        relation: "Son",
+        avatar: "https://i.pravatar.cc/150?img=3",
+        progress: 45,
+    },
+    {
+        id: "4",
+        name: "Anita Devi",
+        username: "anita_d",
+        relation: "Mother",
+        avatar: "https://i.pravatar.cc/150?img=4",
+        progress: 80,
+    },
+];
+
 function HomePage() {
+    const primaryUser = mockSubscribers.find(user => user.relation === "Self");
     return (
         <HomeLayout>
             <Section>
@@ -160,7 +197,7 @@ function HomePage() {
                     <AutoCompleteSearchBar />
                     <Icon icon={ShoppingCart} rounded="xl" className={{ container: " bg-surface-container shadow" }} />
                 </div>
-                <UserBriefCard />
+                <UserBriefCard subscribers={mockSubscribers} userId={primaryUser?.id} />
             </Section>
             <Section title="Top Actions For You" className={{ title: "mb-0" }} scroll="horizontal">
                 {notifications.map((item, index) => (
@@ -189,7 +226,7 @@ function HomePage() {
                 </div>
             </Section>
             <ExpandableCardsCarousel />
-            <Section title="All Specialities" className={{ section: "relative mb-0", secondarySection: "mb-0" }} dialog={<SpecialityDrawer/>}>
+            <Section title="All Specialities" className={{ section: "relative mb-0", secondarySection: "mb-0" }} dialog={<SpecialityDrawer />}>
                 <div className="grid grid-cols-3 gap-3 mt-4">
                     {specialities.map(speciality => (
                         <SpecialityCard key={speciality.title} image={speciality.image} title={speciality.title} url={speciality.url} />
@@ -197,18 +234,18 @@ function HomePage() {
                 </div>
             </Section>
             <ProductShowcaseCarousel />
-        <Section title="Featured Products"  buttonClassName="text-xs rounded-xl" buttonVariant={"outline"} buttonTitle="View All">
+            <Section title="Featured Products" buttonClassName="text-xs rounded-xl" buttonVariant={"outline"} buttonTitle="View All">
                 <div className="w-full flex flex-col items-center justify-center">
-                <ProductShowcaseDialog />
-                <div className="grid grid-cols-2 gap-4 mt-4">
-                    {[...new Array(4)].map((_, index) => (
-                        <ProductShowcaseDialog key={index} />
-                    ))}
-                </div>
+                    <ProductShowcaseDialog />
+                    <div className="grid grid-cols-2 gap-4 mt-4">
+                        {[...new Array(4)].map((_, index) => (
+                            <ProductShowcaseDialog key={index} />
+                        ))}
+                    </div>
                 </div>
             </Section>
             <Section>
-                <Banner1 />
+                <Banner />
             </Section>
             <HomeFooter />
         </HomeLayout>

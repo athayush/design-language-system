@@ -159,7 +159,7 @@ function AutoCompleteSearchBar({
         <Button
           size="icon"
           variant="ghost"
-          className="absolute left-0 top-0 h-full bg-primary overflow-hidden"
+          className="absolute left-0 top-0 h-full hover:bg-primary bg-primary overflow-hidden"
           aria-label="Search"
         >
           <Search className="h-4 w-4 text-on-primary" />

@@ -14,7 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Avatar } from "@/general/atoms/avatar/Avatar";
+import { UserAvatar } from "@/general/atoms/user-avatar/UserAvatar";
 import { Badge } from "@/general/atoms/badge/Badge";
 import { ParaReveal } from "@/general/atoms/para-reveal/ParaReveal";
 
@@ -53,7 +53,7 @@ export function UpcomingAppointmentCard({
   return (
     <Card className="gap-3 overflow-hidden w-96 p-0">
       <CardHeader className="px-4 pt-5 pb-4 flex flex-row items-center gap-3.5 bg-primary text-on-primary">
-        <Avatar
+        <UserAvatar
           name={doctorName}
           profileUrl=""
           className={{
@@ -86,7 +86,7 @@ export function UpcomingAppointmentCard({
         <div className="grid grid-cols-6 gap-2 items-center">
           {/* Appointment For */}
           <div className="col-span-3 flex items-center gap-2">
-            <Avatar
+            <UserAvatar
               name={appointmentFor.name}
               profileUrl={appointmentFor.avatarUrl || ""}
               className={{
@@ -105,7 +105,7 @@ export function UpcomingAppointmentCard({
 
           {/* Appointment By */}
           <div className="col-span-3 flex items-center gap-2">
-            <Avatar
+            <UserAvatar
               name={appointmentBy.name}
               profileUrl={appointmentBy.avatarUrl || ""}
               className={{

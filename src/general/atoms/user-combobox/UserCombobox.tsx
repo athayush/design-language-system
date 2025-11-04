@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/popover";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
-import { Avatar } from "@/general/atoms/avatar/Avatar";
+import { UserAvatar } from "@/general/atoms/user-avatar/UserAvatar";
 import { Icon } from "@/design-tokens/icon/Icon";
 
 type Option = {
@@ -60,7 +60,7 @@ export function UserCombobox({
       return triggerPlaceholder;
     return (
       <div className="flex items-center gap-2 py-2 bg-transparent">
-        <Avatar name={selectedOption.label} profileUrl={selectedOption.profilePictureUrl ?? ""} className={{ avatar: "size-10 rounded-lg my-2", image: "rounded-lg", fallback: "rounded-3xl " }} />
+        <UserAvatar name={selectedOption.label} profileUrl={selectedOption.profilePictureUrl ?? ""} className={{ avatar: "size-10 rounded-lg my-2", image: "rounded-lg", fallback: "rounded-3xl " }} />
         <div className="flex flex-col text-left leading-tight">
           <span className="text-sm font-medium">{selectedOption.label}</span>
           <span className="text-xs text-muted-foreground">{selectedOption.relation}</span>

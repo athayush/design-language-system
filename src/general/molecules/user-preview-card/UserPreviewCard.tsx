@@ -1,7 +1,7 @@
 import type { VariantProps } from "class-variance-authority";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils"; 
-import { Avatar } from "@/general/atoms/avatar/Avatar"; 
+import { UserAvatar } from "@/general/atoms/user-avatar/UserAvatar"; 
 
 type UserPreviewCardProps = {
   name: string;
@@ -59,7 +59,7 @@ const userPreviewCardDetailVariants = cva(
 export function UserPreviewCard({ variant, name, username, avatar, info, className }: UserPreviewCardProps) {
   return (
     <div className={cn(userPreviewCardContainerVariants({ variant, className }))}>
-      <Avatar
+      <UserAvatar
         name={name}
         profileUrl={avatar}
         altText={name}

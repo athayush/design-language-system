@@ -7,9 +7,9 @@ import { Pencil } from "lucide-react";
 
 
 const user = {
-    name: "Ankush Kumar",
-    username: "ankush19",
-    email: "ankush@g.com"
+  name: "Ankush Kumar",
+  username: "ankush19",
+  email: "ankush@g.com"
 }
 
 const defaultProfile: MedicalProfile = {
@@ -35,8 +35,8 @@ function UserProfilePage() {
     <ProfileLayout>
       <div className="bg-background text-on-surface pt-2">
         <UserPreviewProfileCard name={user.name} username={user.username} email={user.email} healthScore={72}>
-          <Button variant="ghost" className="absolute top-0 right-0 m-3 p-0">
-            <Icon className={ {container: "bg-tertiary/15 rounded-bl-xs"}} icon={Pencil} />
+          <Button variant="ghost" className="absolute -top-1 right-0 m-2 p-0">
+            <Icon className={{ container: "bg-tertiary/15 rounded-bl-xs" }} icon={Pencil} />
           </Button>
         </UserPreviewProfileCard>
         <UserMedicalProfileCard profile={defaultProfile} />
@@ -45,4 +45,4 @@ function UserProfilePage() {
   );
 }
 
-export {UserProfilePage}
+export { UserProfilePage }

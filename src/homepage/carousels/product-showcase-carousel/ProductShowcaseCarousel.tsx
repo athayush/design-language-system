@@ -8,7 +8,7 @@ function ProductShowcaseCarousel() {
     ));
 
     return (
-        <div className="w-full h-full ">
+        <div className="w-full h-fit ">
            <Heading hTag="h4" className="mx-4 mt-4 text-2xl border-b-[1.5px] border-b-ath-outline/15">Curated For You</Heading>
             <CustomCarousel items={cards} />
         </div>

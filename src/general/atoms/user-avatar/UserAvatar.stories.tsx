@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Avatar } from "./Avatar";
+import { UserAvatar } from "./UserAvatar";
 
 const meta = {
-    title: "general/atoms/Avatar",
-    component: Avatar,
+    title: "general/atoms/UserAvatar",
+    component: UserAvatar,
     parameters: {
         layout: "centered",
     },
@@ -14,7 +14,7 @@ const meta = {
         altText: {control: "text"},
         className: {control: "object"},
     }
-} satisfies Meta<typeof Avatar>;
+} satisfies Meta<typeof UserAvatar>;
 
 export default meta;
 

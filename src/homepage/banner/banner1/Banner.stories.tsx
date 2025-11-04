@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Banner1 } from "./Banner1";
+import { Banner } from "./Banner";
 
 
 const meta = {
-  title: "homepage/banner/Banner1",
-  component: Banner1,
+  title: "homepage/banner/Banner",
+  component: Banner,
   parameters: {
     layout: "centered",
   },
   tags: ["autodocs"],
-} satisfies Meta<typeof Banner1>;
+} satisfies Meta<typeof Banner>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

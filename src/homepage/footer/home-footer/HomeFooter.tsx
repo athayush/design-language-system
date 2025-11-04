@@ -43,7 +43,7 @@ export function HomeFooter({
             transition={{ duration: 1.5, repeat: Infinity }}
             className="text-red-500"
           >
-            ❤️
+            
           </motion.span>
           <span>in {country}</span>
         </motion.div>

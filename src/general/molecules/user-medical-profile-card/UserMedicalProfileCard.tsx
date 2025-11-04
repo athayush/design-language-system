@@ -11,7 +11,7 @@ import { Icon } from "@/design-tokens/icon/Icon";
 import { Section } from "@/general/atoms/section/Section";
 import { ParaReveal } from "@/general/atoms/para-reveal/ParaReveal";
 import { Badge } from "@/general/atoms/badge/Badge";
-import { Avatar } from "@/general/atoms/avatar/Avatar";
+import { UserAvatar } from "@/general/atoms/user-avatar/UserAvatar";
 
 export type MedicalProfile = {
   name: string;
@@ -155,7 +155,7 @@ export function UserMedicalProfileCard({ profile, subscription = "Free", subscri
           >
             {subscriptionMembers.map(member => (
               <div key={member.id} className="relative inline-block">
-                <Avatar
+                <UserAvatar
                   name={member.name}
                   profileUrl={member.avatar}
                   altText={member.name}

@@ -3,17 +3,26 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { CircleQuestionMark } from "lucide-react"
+import { CircleQuestionMark, type LucideIcon } from "lucide-react"
 
-export function Tooltip() {
+type TooltipProps = {
+  triggerIcon? : LucideIcon,
+  content: string
+}
+
+function Tooltip({triggerIcon = CircleQuestionMark, content}: TooltipProps) {
+  const TriggerIcon = triggerIcon
+
   return (
     <TooltipRoot>
       <TooltipTrigger asChild>
-        <CircleQuestionMark size={14} strokeWidth={2.5} className="text-on-primary" />
+        <TriggerIcon size={14} strokeWidth={2.5} className="text-on-primary" />
       </TooltipTrigger>
       <TooltipContent className="mr-1">
-        <p>How To Increase Health Score?</p>
+        <p>{content}</p>
       </TooltipContent>
     </TooltipRoot>
   )
 }
+
+export { Tooltip }
