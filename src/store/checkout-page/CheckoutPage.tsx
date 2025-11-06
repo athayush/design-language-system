@@ -186,7 +186,7 @@ function CheckoutPage() {
 
     return (
         <Layout>
-            <AppBarWithBack title="Checkout" ><ShoppingCartSheet trigger={<Button>Edit Order</Button>} /></AppBarWithBack>
+            <AppBarWithBack title="Checkout"><ShoppingCartSheet trigger={<Button>Edit Order</Button>} /></AppBarWithBack>
             <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6 lg:px-8 space-y-4">
                 <h1 className="text-primary text-3xl font-semibold">Checkout</h1>
                 <div className="max-w-2xl mb-6 hidden md:block mx-auto space-y-8 text-center">

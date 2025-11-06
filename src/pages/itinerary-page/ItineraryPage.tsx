@@ -18,7 +18,6 @@ Nestled in the **foothills of the Himalayas**, Buxa Tiger Reserve in West Bengal
 Rich with wildlife, historical ruins, and tribal culture, it offers a perfect escape for nature lovers and adventure seekers alike.
 
 From **lush green forests** to **hidden trekking trails** leading to Bhutan borders, the reserve lets you experience a beautiful mix of nature, history, and mystery.
-
 `;
 
     const highlightsMarkdown = `

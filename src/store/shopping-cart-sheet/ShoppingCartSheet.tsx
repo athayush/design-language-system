@@ -1,8 +1,6 @@
-import  { useState } from "react";
+import { useState } from "react";
 import {
-  Bookmark,
   ChevronRightCircle,
-  Share2,
   ShoppingCart,
   Trash,
 } from "lucide-react";
@@ -39,10 +37,10 @@ const mockCartItems = [
 ];
 
 type ShoppingCartSheetProps = {
-  trigger? : React.ReactNode
+  trigger?: React.ReactNode
 }
 
-function ShoppingCartSheet({trigger} : ShoppingCartSheetProps) {
+function ShoppingCartSheet({ trigger }: ShoppingCartSheetProps) {
   const [items, setItems] = useState(mockCartItems);
 
   const updateQuantity = (id: number, quantity: number) => {
@@ -67,14 +65,14 @@ function ShoppingCartSheet({trigger} : ShoppingCartSheetProps) {
     <Sheet>
       <SheetTrigger asChild>
         {
-          trigger ? trigger : <Button variant="outline" size="icon" className="relative">
-          <ShoppingCart size={24} />
-          {getItemCount() > 0 && (
-            <span className="absolute z-10 top-0.5 right-0.5 p-0.5 rounded-full !w-4 bg-primary text-background text-[8px]">
-              {getItemCount()}
-            </span>
-          )}
-        </Button>
+          trigger ? trigger : <Button variant="outline" size="icon" className="relative w-11">
+            <ShoppingCart size={24} />
+            {getItemCount() > 0 && (
+              <span className="absolute z-10 top-0.5 right-0.5 p-0.5 rounded-full !w-4 bg-primary text-background text-[8px]">
+                {getItemCount()}
+              </span>
+            )}
+          </Button>
         }
       </SheetTrigger>
       <SheetContent className="w-full sm:max-w-md">
@@ -90,45 +88,40 @@ function ShoppingCartSheet({trigger} : ShoppingCartSheetProps) {
           </div>
         </SheetHeader>
         <Separator />
-        <ScrollArea className="h-[65vh]">
+        <ScrollArea className="h-[85vh]">
           {items.length === 0 ? (
-            <p className="p-4 text-center text-muted-foreground">
-              Your cart is empty
-            </p>
+            <div className="flex flex-col items-center justify-center h-full text-muted-foreground">
+              <ShoppingCart size={48} className="mb-4" />
+              <p>Your cart is empty</p>
+            </div>
           ) : (
             items.map((item) => (
               <Card
                 key={item.id}
-                className="gap-4 px-2 py-0 pb-4 mx-2 mb-4 border-0 border-b rounded-none shadow-none last:mb-32"
+                className="gap-4 p-4 mx-4 mb-4 last:mb-8"
               >
                 <CardContent className="px-0 space-y-5">
-                  <div>
-                    <div className="flex items-center justify-between gap-3 pt-4">
-                     <Badge variant={"outline"} className={{badge: "mb-2 text-green-500 border-green-500"}}>Ath Assured</Badge>
-                      <div className="flex gap-6">
-                        <Bookmark size={18} />
-                        <Share2 size={18} />
-                      </div>
-                    </div>
+                  {/* <div> */}
+                  <Badge variant="outline" className={{ badge: "mb-2 text-green-500 border-green-500" }}>Ath Assured</Badge>
 
-                    <div className="flex w-full gap-3">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="shadow aspect-square size-20 object-cover rounded-2xl"
-                      />
-                      <div className="w-full mt-2">
-                        <p className="font-semibold">{item.title}</p>
-                        <div className="flex items-center gap-2">
-                          <p className="font-bold">Rs. {item.price}</p>
-                          <p className="text-sm text-primary/50">
-                            M.R.P.:{" "}
-                            <span className="line-through">Rs. {item.mrp}</span>
-                          </p>
-                        </div>
+                  <div className="flex mt-1 items-start w-full gap-3">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="shadow aspect-square size-20 object-cover rounded-2xl"
+                    />
+                    <div className="w-full mt-2">
+                      <p className="font-semibold">{item.title}</p>
+                      <div className="flex items-center text-xl gap-2">
+                        <p className="font-bold">Rs. {item.price}</p>
+                        <p className="text-base font-bold text-primary/50">
+                          M.R.P.:{" "}
+                          <span className="line-through text-base">Rs. {item.mrp}</span>
+                        </p>
                       </div>
                     </div>
                   </div>
+                  {/* </div> */}
                 </CardContent>
 
                 <CardFooter className="justify-end gap-12">
@@ -179,4 +172,4 @@ function ShoppingCartSheet({trigger} : ShoppingCartSheetProps) {
   );
 }
 
-export  {ShoppingCartSheet}
+export { ShoppingCartSheet }
