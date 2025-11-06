@@ -1,10 +1,10 @@
-import { CustomCarousel, Card } from "@/components/ui/custom-carousel/CustomCarousel";
+import { CustomCarousel, CarouselCard } from "@/components/ui/custom-carousel/CustomCarousel";
 import { Heading } from "@/general/typography/heading/Heading";
 
 
 function ProductShowcaseCarousel() {
     const cards = data.map((card, index) => (
-        <Card key={card.src} card={card} index={index} />
+        <CarouselCard key={card.src} card={card} index={index} />
     ));
 
     return (

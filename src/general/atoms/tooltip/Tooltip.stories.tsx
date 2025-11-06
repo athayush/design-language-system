@@ -3,7 +3,7 @@ import { Tooltip } from "./Tooltip";
 import { Info, HelpCircle } from "lucide-react";
 
 const meta: Meta<typeof Tooltip> = {
-  title: "Components/Tooltip",
+  title: "general/atoms/Tooltip",
   component: Tooltip,
   tags: ["autodocs"],
   argTypes: {

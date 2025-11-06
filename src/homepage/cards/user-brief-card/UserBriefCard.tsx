@@ -2,7 +2,7 @@ import type { TClassName } from "@/general/atoms/section/Section";
 import { CheckCircle2, PlusIcon } from "lucide-react";
 import { useState } from "react";
 import { Section } from "@/general/atoms/section/Section"; 
-import { Tooltip } from "@/homepage/tooltip/Tooltip"; 
+import { Tooltip } from "@/general/atoms/tooltip/Tooltip"; 
 import { Button } from "@/components/ui/button";
 import {
     Card,
