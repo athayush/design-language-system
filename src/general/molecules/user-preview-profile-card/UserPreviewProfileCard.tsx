@@ -3,10 +3,10 @@ import {
   Mail,
   Stars,
 } from "lucide-react";
-import { ProgressAvatar } from "@/general/atoms/progress-avatar/ProgressAvatar";
 import { Heading }  from "@/general/typography/heading/Heading"
 import { Badge } from "@/general/atoms/badge/Badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { UserAvatar } from "@/general/atoms/user-avatar/UserAvatar";
 
 type UserPreviewProfileCardProps = {
   children?: React.ReactNode;
@@ -18,12 +18,12 @@ type UserPreviewProfileCardProps = {
   healthScore?: number;
 };
 
-export function UserPreviewProfileCard({ children, name, username, email, avatar = "/public/images/placeholder-lg.svg", subscription = "Free", healthScore = 0 }: UserPreviewProfileCardProps) {
+export function UserPreviewProfileCard({ children, name, username, email, avatar = "/images/placeholder-lg.svg", subscription = "Free", healthScore = 0 }: UserPreviewProfileCardProps) {
   return (
-    <Card className="relative shadow-none border-none bg-surface-container text-on-surface m-4 py-4 inset-shadow">
+    <Card className="relative shadow rounded-lg border-none bg-primary-container text-on-primary-container m-4 py-4 inset-shadow">
       <CardContent className="px-4">
         <div className="flex gap-6 items-center">
-          <ProgressAvatar src={avatar} alt="Avatar" fallback={name.split(" ").at(0) ?? ""} progress={healthScore} />
+          <UserAvatar profileUrl={avatar} altText="Avatar" name={name} progress={healthScore} />
           <div className="w-full -mt-4">
             <div className="flex gap-2 items-center">
               <Heading className="text-lg md:text-xl">{name}</Heading>

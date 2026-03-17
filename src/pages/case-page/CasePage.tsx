@@ -23,9 +23,9 @@ import {
 
 import { Layout } from "@/general/templates/layout/Layout";
 import { EditCaseFormSheet } from "@/athcare/atoms/edit-case-form-sheet/EditCaseFormSheet";
-import { ServicesSheet } from "@/catalog/atoms/ServicesSheet"; 
+import { ServicesSheet } from "@/catalog/atoms/ServicesSheet";
 import { AppBarWithBack } from "@/general/navigation/appbar/AppBarWithBack";
-import { Avatar as UserAvatar } from "@/general/atoms/avatar/Avatar";
+import { UserAvatar } from "@/general/atoms/user-avatar/UserAvatar";
 import type { PGAthCareCase } from "../history-page/HistoryPage";
 import { ServiceCard } from "@/athcare/atoms/service-card/ServiceCard";
 import { CaseFileCard } from "@/athcare/molecules/case-file-card/CaseFileCard";
@@ -92,7 +92,7 @@ const dummyAthCareServiceDetails: PGAthCareServiceDetail[] = [
     deletedAt: null,
     id: 501,
     serviceId: 42,
-    caseId: "a1b2c3d4-e5f6-7890-1234-567890abcdef", 
+    caseId: "a1b2c3d4-e5f6-7890-1234-567890abcdef",
     caseManagerId: 201,
     transactionId: 9001,
     subscriberCrn: 9876,
@@ -114,7 +114,7 @@ const dummyAthCareServiceDetails: PGAthCareServiceDetail[] = [
     deletedAt: null,
     id: 502,
     serviceId: 23,
-    caseId: "f0e9d8c7-b6a5-4321-fedc-ba9876543210", 
+    caseId: "f0e9d8c7-b6a5-4321-fedc-ba9876543210",
     subscriberCrn: 9878,
     status: "In Progress",
     personnelId: 22,
@@ -128,12 +128,12 @@ const dummyAthCareServiceDetails: PGAthCareServiceDetail[] = [
     deletedAt: null,
     id: 503,
     serviceId: 55,
-    caseId: "a1b2c3d4-e5f6-7890-1234-567890abcdef", 
+    caseId: "a1b2c3d4-e5f6-7890-1234-567890abcdef",
     caseManagerId: 201,
     transactionId: 9002,
     subscriberCrn: 9876,
     initiationLocation: { x: 28.6139, y: 77.2090 },
-    status: "Scheduled",
+    status: "Rescheduled",
     personnelTypeId: 2,
     personnelJourneyId: 102,
     caseManagerSummary: "Scheduled a follow-up MRI scan as per protocol.",
@@ -145,12 +145,12 @@ function CasePage() {
     <Layout>
       <AppBarWithBack
         title={
-         `Treatment for Frequent Headache`
+          `Treatment for Frequent Headache`
         }
         subTitle={"By Praveen Singh"}
       >
         <EditCaseFormSheet medicalCase={dummyMedCase} />
-        <ServicesSheet/>
+        <ServicesSheet />
       </AppBarWithBack>
       <div className="space-y-2">
         <Section
@@ -158,19 +158,19 @@ function CasePage() {
             section: "px-4  pb-1 mx-0 grid grid-cols-1 gap-3 bg-surface-container",
           }}
         >
-          <div className="flex gap-4 items-baseline">
+          <div className="flex gap-4 items-start">
             <UserAvatar
               name={"User"}
               profileUrl="#"
               altText={"User"}
               className={{
-                avatar: "size-12 mt-3",
+                avatar: "size-12 mt-2",
               }}
             />
             <div className="space-y-1">
               <div>
-                <h2 className="font-bold text-lg">
-                 Treatment For Frequent Headache
+                <h2 className="font-bold text-lg mt-1">
+                  Treatment For Frequent Headache
                 </h2>
                 <ul className="list-disc list-inside flex items-center gap-6 justify-between text-xs text-on-surface-variant">
                   <li>
@@ -182,56 +182,56 @@ function CasePage() {
                 </ul>
               </div>
               <p className="text-sm text-on-surface-variant">
-               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste fuga optio cum quasi earum corrupti voluptate quibusdam. Repellendus hic quasi, officia rerum odio eaque quisquam pariatur ex iste explicabo excepturi.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste fuga optio cum quasi earum corrupti voluptate quibusdam. Repellendus hic quasi, officia rerum odio eaque quisquam pariatur ex iste explicabo excepturi.
               </p>
             </div>
           </div>
-              <Accordion
-                type="single"
-                collapsible
-                className="w-full"
-                defaultValue="3"
-              >
-                <AccordionItem value={"User Id"} className="py-2">
-                  <AccordionPrimitive.Trigger className="text-on-surface-variant w-full focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-center justify-between rounded-md py-2 text-left text-[15px] leading-6 font-semibold transition-all outline-none focus-visible:ring-[3px] [&[data-state=open]>svg]:rotate-180">
-                    <span className="flex flex-col space-y-1">
-                      Summary by You
-                    </span>
-                    <ChevronDownIcon
-                      size={16}
-                      className="pointer-events-none shrink-0 opacity-60 transition-transform duration-200"
-                      aria-hidden="true"
-                    />
-                  </AccordionPrimitive.Trigger>
-                  <AccordionContent className="text-on-surface-variant pb-2 w-full">
-                    <div className="flex gap-4">
-                      <UserAvatar
-                        name="John Doe"
-                        profileUrl="#"
-                        altText="John Doe"
-                        className={{
-                          avatar: "size-12",
-                        }}
-                      />
-                      <div className="space-y-1 w-full">
-                        <div className="flex items-center gap-4 justify-between">
-                          <h2 className="font-semibold">Treatment for Frequent Headache</h2>
-                          <p className="text-xs">
-                            {(new Date).toLocaleDateString()}
-                          </p>
-                        </div>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio, quas tenetur odio iure dolorum vitae, tempore repudiandae exercitationem architecto maiores quis, facilis dignissimos et nemo voluptatum consequuntur aperiam. Assumenda, quia.</p>
-                      </div>
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full"
+            defaultValue="3"
+          >
+            <AccordionItem value={"User Id"} className="py-2">
+              <AccordionPrimitive.Trigger className="text-on-surface-variant w-full focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-center justify-between rounded-md py-2 text-left text-[15px] leading-6 font-semibold transition-all outline-none focus-visible:ring-[3px] [&[data-state=open]>svg]:rotate-180">
+                <span className="flex flex-col space-y-1">
+                  Summary by You
+                </span>
+                <ChevronDownIcon
+                  size={16}
+                  className="pointer-events-none shrink-0 opacity-60 transition-transform duration-200"
+                  aria-hidden="true"
+                />
+              </AccordionPrimitive.Trigger>
+              <AccordionContent className="text-on-surface-variant pb-2 w-full">
+                <div className="flex gap-4">
+                  <UserAvatar
+                    name="John Doe"
+                    profileUrl="#"
+                    altText="John Doe"
+                    className={{
+                      avatar: "size-12",
+                    }}
+                  />
+                  <div className="space-y-1 w-full">
+                    <div className="flex items-center gap-4 justify-between">
+                      <h2 className="font-semibold">Treatment for Frequent Headache</h2>
+                      <p className="text-xs">
+                        {(new Date).toLocaleDateString()}
+                      </p>
                     </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio, quas tenetur odio iure dolorum vitae, tempore repudiandae exercitationem architecto maiores quis, facilis dignissimos et nemo voluptatum consequuntur aperiam. Assumenda, quia.</p>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </Section>
         <Tabs defaultValue="tab-timeline" className="gap-0">
-          <TabsList className="before:bg-border relative px-4 py-0 h-auto w-full gap-0.5 bg-transparent before:absolute before:inset-x-0 before:bottom-0 before:h-px">
+          <TabsList className="before:bg-border relative px-4 py-0 h-auto w-full gap-0.5 bg-transparent before:absolute before:inset-x-0 ">
             <TabsTrigger
               value="tab-timeline"
-              className="w-full bg-surface-container-low data-[state=active]:bg-surface-container overflow-hidden rounded-b-none border-x border-t py-2 data-[state=active]:z-10 data-[state=active]:shadow-none"
+              className="w-full bg-surface data-[state=active]:bg-surface-container overflow-hidden rounded-b-none border-x border-t py-2 data-[state=active]:z-10 data-[state=active]:shadow-none data-[state=active]:text-on-surface text-muted-foreground border-b data-[state=active]:border-b-0"
             >
               <ChartNoAxesGantt
                 className="-ms-0.5 me-1.5 opacity-60"
@@ -242,7 +242,7 @@ function CasePage() {
             </TabsTrigger>
             <TabsTrigger
               value="tab-files"
-              className="w-full bg-surface-container-low overflow-hidden rounded-b-none border-x border-t py-2 data-[state=active]:z-10 data-[state=active]:shadow-none data-[state=active]:bg-surface-container"
+              className="w-full bg-surface data-[state=active]:bg-surface-container overflow-hidden rounded-b-none border-x border-t py-2 data-[state=active]:z-10 data-[state=active]:shadow-none data-[state=active]:text-on-surface text-muted-foreground border-b data-[state=active]:border-b-0"
             >
               <Files
                 className="-ms-0.5 me-1.5 opacity-60"

@@ -1,0 +1,203 @@
+import { Search } from "lucide-react";
+import React, { useCallback, useEffect, useState } from "react";
+import { useDebounce } from "use-debounce";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
+// Simulated API call
+async function fetchSuggestions(query: string): Promise<string[]> {
+  await new Promise(resolve => setTimeout(resolve, 300)); // Simulate network delay
+  const allSuggestions = [
+    "Bariatric Surgery",
+    "Hepatology",
+    "Cardiac Sciences",
+    "Infertility",
+    "Haematology & BMT",
+    "Oncology",
+    "Nephrology & Urology",
+    "ENT",
+    "Neuro Sciences",
+    "Neurology",
+    "Ophthalmology",
+    "Orthopedics",
+    "Obstetrics & Gynecology",
+    "Abdominal pain",
+    "Abnormal liver enzymes",
+    "Ankle pain",
+    "Anosmia",
+    "Arm pain",
+    "Back pain",
+    "Bleeding after vaginal sex",
+    "Bleeding during pregnancy",
+    "Blood clots",
+    "Blood in semen",
+    "Brain lesions",
+    "Breast calcifications",
+  ];
+  return allSuggestions.filter(suggestion =>
+    suggestion.toLowerCase().includes(query.toLowerCase()),
+  );
+};
+
+// const trigger = (
+//   <Button
+//     size="icon"
+//     variant="ghost"
+//     className="absolute right-0 top-0 h-full"
+//     aria-label="Search"
+//   >
+//     <Filter className="h-4 w-4" />
+//   </Button>
+// );
+
+type AutoCompleteProps = {
+  value?: string;
+  onChange?: (value: string) => void;
+  children?: React.ReactNode;
+  className?: string;
+};
+
+function AutoCompleteSearchBar({
+  value = "",
+  onChange,
+  children,
+  className,
+}: AutoCompleteProps) {
+  const [query, setQuery] = useState(value);
+  const [debouncedQuery] = useDebounce(query, 300);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+
+  const fetchSuggestionsCallback = useCallback(async (q: string) => {
+    if (q.trim() === "") {
+      setSuggestions([]);
+      return;
+    }
+    setIsLoading(true);
+    const results = await fetchSuggestions(q);
+    setSuggestions(results);
+    setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    if (debouncedQuery && isFocused) {
+      fetchSuggestionsCallback(debouncedQuery);
+    }
+    else {
+      setSuggestions([]);
+    }
+  }, [debouncedQuery, fetchSuggestionsCallback, isFocused]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    setQuery(newValue);
+    onChange?.(newValue);
+    setSelectedIndex(-1);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSelectedIndex(prev =>
+        prev < suggestions.length - 1 ? prev + 1 : prev,
+      );
+    }
+    else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSelectedIndex(prev => (prev > 0 ? prev - 1 : -1));
+    }
+    else if (e.key === "Enter" && selectedIndex >= 0) {
+      setQuery(suggestions[selectedIndex]);
+      setSuggestions([]);
+      setSelectedIndex(-1);
+    }
+    else if (e.key === "Escape") {
+      setSuggestions([]);
+      setSelectedIndex(-1);
+    }
+  };
+
+  const handleSuggestionClick = (suggestion: string) => {
+    setQuery(suggestion);
+    onChange?.(suggestion);
+    setSuggestions([]);
+    setSelectedIndex(-1);
+  };
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setTimeout(() => {
+      setIsFocused(false);
+      setSuggestions([]);
+      setSelectedIndex(-1);
+    }, 200);
+  };
+
+  return (
+    <div className="w-full mx-auto ">
+      <div className="relative rounded-xl overflow-hidden">
+        <Input
+          type="text"
+          placeholder="Search..."
+          value={query}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          className={cn("px-10 py-4 bg-surface-container-lowest rounded-xl shadow", className)}
+          aria-label="Search input"
+          aria-autocomplete="list"
+          aria-controls="suggestions-list"
+          aria-expanded={suggestions.length > 0}
+        />
+        <Button
+          size="icon"
+          variant="ghost"
+          className="absolute left-0 top-0 "
+          aria-label="Search"
+        >
+          <Search className="text-primary" />
+        </Button>
+        <div className="absolute right-0 top-0">{children}</div>
+      </div>
+      {isLoading && isFocused && (
+        <div
+          className="mt-2 p-2 bg-background border rounded-md shadow-sm absolute z-10"
+          aria-live="polite"
+        >
+          Loading...
+        </div>
+      )}
+      {suggestions.length > 0 && !isLoading && isFocused && (
+        <ul
+          title="Suggestions"
+          id="suggestions-list"
+          className="mt-2 bg-background border rounded-md shadow-sm absolute z-10"
+          role="listbox"
+        >
+          {suggestions.map((suggestion, index) => (
+            <li
+              key={suggestion}
+              className={`px-4 py-2 cursor-pointer hover:bg-muted ${index === selectedIndex ? "bg-muted" : ""
+                }`}
+              onClick={() => handleSuggestionClick(suggestion)}
+              role="option"
+              aria-selected={index === selectedIndex}
+            >
+              {suggestion}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export {
+  AutoCompleteSearchBar
+}

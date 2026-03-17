@@ -1,10 +1,11 @@
-import { Button } from "@/general/atoms/button/Button"; 
+import { Button } from "@/general/atoms/button/Button";
 import { Drawer, DrawerClose } from "@/general/atoms/drawer/Drawer"
-import { Section } from "@/general/atoms/section/Section"; 
+import { Section } from "@/general/atoms/section/Section";
 import { MultiImageUploader } from "@/general/atoms/multi-image-uploader/MultiImageUploader";
 import { ImagePlusIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { FileWithPreview } from "@/hooks/use-file-upload";
+import { useState } from "react";
 
 
 export type AddNewDocumentDrawerProps = {
@@ -22,7 +23,7 @@ export type AddNewDocumentDrawerProps = {
 export function AddNewDocumentDrawer({
   classname,
 }: AddNewDocumentDrawerProps) {
-
+  const [open, setOpen] = useState(false);
   const handleFilesAdded = async (addedFiles: FileWithPreview[]) => {
     console.log("Files added:", addedFiles.map(f => f.id));
     await new Promise(r => setTimeout(r, 1000));
@@ -31,12 +32,13 @@ export function AddNewDocumentDrawer({
 
   return (
     <Drawer
-      id="new-document"
+      open={open}
+      onOpenChange={setOpen}
       title="Add New Document"
       description="Add new document or folder."
       icon={ImagePlusIcon}
       iconSize={20}
-      button={{variant: "primary", size: "sm"}}
+      button={{ variant: "primary", size: "sm" }}
       className={{
         content: "h-[74vh]",
         scroll: "h-full pb-36",

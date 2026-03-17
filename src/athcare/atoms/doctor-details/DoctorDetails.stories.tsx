@@ -19,7 +19,7 @@ type Story = StoryObj<typeof DoctorDetails>;
 export const Default: Story = {
   render: (args) => (
     <DoctorDetails {...args}>
-      <Button variant="outline">View Doctor Details</Button>
+      <Button>View Doctor Details</Button>
     </DoctorDetails>
   ),
 };

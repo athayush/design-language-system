@@ -7,12 +7,11 @@ import {
   Venus,
   Weight,
 } from "lucide-react";
-import { Icon } from "@/general/icon/icon/Icon"; 
-import { Section } from "@/general/atoms/section/Section"; 
-import { Heading } from "@/general/typography/heading/Heading"; 
-import { ParaReveal } from "@/general/atoms/para-reveal/ParaReveal"; 
-import { Badge } from "@/general/atoms/badge/Badge"; 
-import { Avatar } from "@/general/atoms/avatar/Avatar";
+import { Icon } from "@/design-tokens/icon/Icon";
+import { Section } from "@/general/atoms/section/Section";
+import { ParaReveal } from "@/general/atoms/para-reveal/ParaReveal";
+import { Badge } from "@/general/atoms/badge/Badge";
+import { UserAvatar } from "@/general/atoms/user-avatar/UserAvatar";
 
 export type MedicalProfile = {
   name: string;
@@ -49,12 +48,15 @@ export function UserMedicalProfileCard({ profile, subscription = "Free", subscri
     <Section
       className={{
         section:
-          "mt-6 pb-5 mx-0 space-y-6",
-      }}
+          "mt-6 pb-5 mx-0 space-y-6 px-4",
+        title: "pl-4 text-on-surface text-xl font-semibold"
+      }
+      }
+      title="Your Vitals"
     >
-      <div className="px-4 grid grid-cols-5 items-center justify-between gap-4">
-        <div className="text-center">
-          <Icon className="">
+      <div className="px-4 grid grid-cols-5 items-center justify-between gap-4 text-on-surface">
+        <div className="text-center  ">
+          <Icon >
             {
               profile?.gender === "Male"
                 ? <Mars size={20} />
@@ -69,7 +71,7 @@ export function UserMedicalProfileCard({ profile, subscription = "Free", subscri
           </p>
         </div>
         <div className="text-center">
-          <Icon className="">
+          <Icon >
             <Ruler size={20} />
           </Icon>
           <p className="text-xs leading-6">Height</p>
@@ -78,7 +80,7 @@ export function UserMedicalProfileCard({ profile, subscription = "Free", subscri
           </p>
         </div>
         <div className="text-center">
-          <Icon className="">
+          <Icon >
             <Weight size={20} />
           </Icon>
           <p className="text-xs leading-6">Weight</p>
@@ -87,7 +89,7 @@ export function UserMedicalProfileCard({ profile, subscription = "Free", subscri
           </p>
         </div>
         <div className="text-center">
-          <Icon className="">
+          <Icon >
             <PersonStanding size={20} />
           </Icon>
           <p className="text-xs leading-6">Age</p>
@@ -96,7 +98,7 @@ export function UserMedicalProfileCard({ profile, subscription = "Free", subscri
           </p>
         </div>
         <div className="text-center">
-          <Icon className="">
+          <Icon>
             <Droplets size={20} />
           </Icon>
           <p className="text-xs leading-6">Blood</p>
@@ -105,25 +107,21 @@ export function UserMedicalProfileCard({ profile, subscription = "Free", subscri
           </p>
         </div>
       </div>
-
-      <div className="px-4">
-        <Heading hTag="h2" className="text-base leading-7">
-          Current Medical Synopsis:
-        </Heading>
+      <Section asDiv title="Current Medical Synopsis" className={{ title: "pl-4 text-on-surface text-xl font-semibold", section: "mt-6 pb-5 mx-0 space-y-6 " }}>
         {subscription === "Free"
           ? (
-              <p>
-                The "Current Medical Synopsis" is subscribers only service. Become a subscriber to avail this service any many more.
-                <span className="text-tertiary underline">View our plans</span>
-                {" "}
-                to get started.
-              </p>
-            )
+            <p>
+              The "Current Medical Synopsis" is subscribers only service. Become a subscriber to avail this service any many more.
+              <span className="text-tertiary underline">View our plans</span>
+              {" "}
+              to get started.
+            </p>
+          )
           : (
-              <ParaReveal className="leading-5">
-                {profile?.medicalSynopsis || "No current synopsis."}
-              </ParaReveal>
-            )}
+            <ParaReveal className="leading-5">
+              {profile?.medicalSynopsis || "No current synopsis."}
+            </ParaReveal>
+          )}
         <ul className="list-disc list-inside">
           <li className="mt-2">
             <span className="font-semibold">Health Score: </span>
@@ -142,7 +140,8 @@ export function UserMedicalProfileCard({ profile, subscription = "Free", subscri
             {profile?.allergies || "Not Specified"}
           </li>
         </ul>
-      </div>
+        {/* </div> */}
+      </Section>
       {subscriptionMembers && subscriptionMembers?.length > 0
         && (
           <Section
@@ -156,7 +155,7 @@ export function UserMedicalProfileCard({ profile, subscription = "Free", subscri
           >
             {subscriptionMembers.map(member => (
               <div key={member.id} className="relative inline-block">
-                <Avatar
+                <UserAvatar
                   name={member.name}
                   profileUrl={member.avatar}
                   altText={member.name}
