@@ -25,7 +25,7 @@ function MedicalCase({
                     />
                 </TimelineIndicator>
                 <a
-                    className="rounded-lg shadow px-4 pt-3 pb-4 bg-surface-container-low text-on-surface hover:bg-surface-container"
+                    className="rounded-lg shadow px-4 pt-3 pb-4 bg-surface-container-low text-on-surface hover:bg-surface-container mb-4"
                 >
                     <TimelineHeader>
                         <TimelineTitle className="font-semibold text-md">

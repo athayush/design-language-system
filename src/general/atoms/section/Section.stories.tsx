@@ -28,6 +28,5 @@ export const Default: Story = {
     args: {
        hTag: "h1",
        title: "Section Title",
-       
     },
 };

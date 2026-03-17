@@ -1,11 +1,12 @@
 /* eslint-disable react-refresh/only-export-components */
 import { Section } from "@/general/atoms/section/Section";
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { AddNewFolderDialog } from "@/athcare/molecules/add-new-folder-dialog/AddNewFolderDialog";
 import { FileCardList } from "@/athcare/molecules/file-card-list/FileCardList";
 import { FolderCardList } from "@/athcare/molecules/folder-card-list/FolderCardList";
 import { ViewProvider } from "@/athcare/molecules/view-provider/ViewProvider";
-import { ProfileLayout } from "@/general/templates/profile-layout.tsx/ProfileLayout";
+import { ProfileLayout } from "@/general/templates/profile-layout/ProfileLayout";
 import { TriangleAlertIcon } from "lucide-react";
 
 const medilockerId = 1
@@ -100,37 +101,72 @@ export const mockPgMedlockFiles = [
   },
 ];
 
-function MedilockerPage(){
-return (
-    <ProfileLayout actions={medilockerId && <AddNewFolderDialog onValueChange={()=> {}} />}>
-      {medilockerId
-        ? (
-            <>
-              <ViewProvider title="Folders" defaultSortBy="Name" sortByOptions={["Date", "Last Access", "Last Modified", "Name"]}>
-                <FolderCardList folders={mockPgMedlockFolders} />
-              </ViewProvider>
-              <ViewProvider title="Recent Files" defaultSortBy="Date" sortByOptions={["Date", "Last Access", "Last Modified", "Name"]} className={{ gridLayout: "grid-cols-3" }}>
-                <FileCardList  files={mockPgMedlockFiles} isRoot={true} />
-              </ViewProvider>
-            </>
-          )
-        : (
-            <Section className={{ section: "my-4" }}>
-              <Card className="!p-4 mb-6 md:mb-8 border-2 border-indigo-100/70">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-16 h-16 rounded-lg bg-red-500/10 flex items-center justify-center">
-                    <TriangleAlertIcon className="w-6 h-6 text-red-600" />
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="text-lg font-semibold text-gray-900">Medilocker Subscription Not Activated.</h3>
-                    <p className="text-sm text-gray-500 mt-0.5">Contact us to get "Lifetime Access" of Medi-Locker at Rs. 499 only. Offer valid till today.</p>
-                  </div>
-                </div>
-              </Card>
-            </Section>
-          )}
+
+function MedilockerPage() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [folderName, setFolderName] = useState("");
+
+  const handleCreateFolder = () => {
+    console.log("Creating folder:", folderName);
+    // TODO: Call API or add logic to create folder
+    setFolderName("");
+    setIsDialogOpen(false);
+  };
+
+  return (
+    <ProfileLayout
+      actions={
+        medilockerId && (
+          <AddNewFolderDialog
+            open={isDialogOpen}
+            onOpenChange={setIsDialogOpen}
+            value={folderName}
+            onValueChange={setFolderName}
+            onCreate={handleCreateFolder}
+          />
+        )
+      }
+    >
+      {medilockerId ? (
+        <>
+          <ViewProvider
+            title="Folders"
+            defaultSortBy="Name"
+            sortByOptions={["Date", "Last Access", "Last Modified", "Name"]}
+          >
+            <FolderCardList folders={mockPgMedlockFolders} />
+          </ViewProvider>
+
+          <ViewProvider
+            title="Recent Files"
+            defaultSortBy="Date"
+            sortByOptions={["Date", "Last Access", "Last Modified", "Name"]}
+            className={{ gridLayout: "grid-cols-3" }}
+          >
+            <FileCardList files={mockPgMedlockFiles} isRoot={true} />
+          </ViewProvider>
+        </>
+      ) : (
+        <Section className={{ section: "my-4" }}>
+          <Card className="!p-4 mb-6 md:mb-8 border-2 border-indigo-100/70">
+            <div className="flex items-start space-x-4">
+              <div className="flex-shrink-0 w-16 h-16 rounded-lg bg-red-500/10 flex items-center justify-center">
+                <TriangleAlertIcon className="w-6 h-6 text-red-600" />
+              </div>
+              <div className="flex-grow">
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Medilocker Subscription Not Activated.
+                </h3>
+                <p className="text-sm text-gray-500 mt-0.5">
+                  Contact us to get "Lifetime Access" of Medi-Locker at Rs. 499 only. Offer valid till today.
+                </p>
+              </div>
+            </div>
+          </Card>
+        </Section>
+      )}
     </ProfileLayout>
   );
 }
 
-export {MedilockerPage}
+export { MedilockerPage }

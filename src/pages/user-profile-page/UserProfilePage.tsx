@@ -1,23 +1,23 @@
-import { Icon } from "@/general/icon/icon/Icon";
+import { Icon } from "@/design-tokens/icon/Icon";
 import { Button } from "@/components/ui/button";
 import { UserMedicalProfileCard, type MedicalProfile } from "@/general/molecules/user-medical-profile-card/UserMedicalProfileCard";
 import { UserPreviewProfileCard } from "@/general/molecules/user-preview-profile-card/UserPreviewProfileCard";
-import { ProfileLayout } from "@/general/templates/profile-layout.tsx/ProfileLayout";
+import { ProfileLayout } from "@/general/templates/profile-layout/ProfileLayout";
 import { Pencil } from "lucide-react";
 
 
 const user = {
-    name: "Ankush Kumar",
-    username: "ankush19",
-    email: "ankush@g.com"
+  name: "Ankush Kumar",
+  username: "ankush19",
+  email: "ankush@g.com"
 }
 
 const defaultProfile: MedicalProfile = {
-  name: "Jane Doe",
+  name: "Ankush Kumar",
   avatar: "https://api.dicebear.com/7.x/initials/svg?seed=JD",
   username: "janedoe",
   email: "jane.doe@example.com",
-  gender: "Female",
+  gender: "Male",
   height: "165 cm",
   weight: "60 kg",
   age: "30",
@@ -33,10 +33,10 @@ const defaultProfile: MedicalProfile = {
 function UserProfilePage() {
   return (
     <ProfileLayout>
-      <div className="bg-surface-container text-on-surface pt-2">
+      <div className="bg-background text-on-surface pt-2">
         <UserPreviewProfileCard name={user.name} username={user.username} email={user.email} healthScore={72}>
-          <Button variant="ghost" className="absolute top-0 right-0 m-3 p-0">
-            <Icon className={ "bg-tertiary/15 rounded-bl-xs"}><Pencil size={16} /></Icon>
+          <Button variant="ghost" className="absolute -top-1 right-0 m-2 p-0">
+            <Icon className={{ container: "bg-tertiary/15 rounded-bl-xs" }} icon={Pencil} />
           </Button>
         </UserPreviewProfileCard>
         <UserMedicalProfileCard profile={defaultProfile} />
@@ -45,4 +45,4 @@ function UserProfilePage() {
   );
 }
 
-export {UserProfilePage}
+export { UserProfilePage }

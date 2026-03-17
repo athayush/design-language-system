@@ -1,5 +1,4 @@
 import { FolderPlusIcon } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -15,32 +14,33 @@ import { Label } from "@/components/ui/label";
 
 type AddNewFolderDialogProps = {
   open?: boolean;
-  onOpenChange?: (open: boolean) => void;
-  value?: string;
+  onOpenChange: (open: boolean) => void;
+  value: string;
   onValueChange: (value: string) => void;
   onCreate?: () => void;
   isLoading?: boolean;
 };
 
 export function AddNewFolderDialog({
-  open,
+  open = false,
   onOpenChange,
   value,
   onValueChange,
   onCreate,
   isLoading = false,
 }: AddNewFolderDialogProps) {
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="icon" className="aspect-square size-12 rounded-full">
-          <FolderPlusIcon />
-        </Button>
+        <Button variant="outline" size="icon" className="aspect-square size-12 rounded-full bg-secondary-container text-on-secondary-container"><FolderPlusIcon /></Button>
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-md">
         <DialogHeader className="text-start">
           <DialogTitle>New Folder</DialogTitle>
         </DialogHeader>
+
         <div className="grid flex-1 gap-2 pt-2">
           <Label htmlFor="folderName" className="sr-only">
             Folder Name
@@ -52,10 +52,10 @@ export function AddNewFolderDialog({
             onChange={(e) => onValueChange(e.target.value)}
           />
         </div>
-        
+
         <DialogFooter className="mt-4 flex w-full justify-end gap-3">
           <DialogClose asChild>
-            <Button type="button" variant="outline">
+            <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
               Cancel
             </Button>
           </DialogClose>

@@ -1,12 +1,12 @@
 import { Menu } from "lucide-react";
-import { Avatar } from "@/general/atoms/avatar/Avatar"
+import { UserAvatar } from "@/general/atoms/user-avatar/UserAvatar"
 import { cn } from "@/lib/utils"; 
 
 export function AppBar({ className, ...props }: React.ComponentProps<"section">) {
   return (
     <section
       className={cn(
-        "sticky inset-x-0 top-0 z-50 w-dvw text-on-surface shadow-2xs gap-4 border-b-2 bg-surface-container",
+        "sticky inset-x-0 top-0 z-50 w-dvw text-on-surface shadow-2xs gap-4 border-b-2 bg-surface",
         className,
       )}
       {...props}
@@ -17,7 +17,7 @@ export function AppBar({ className, ...props }: React.ComponentProps<"section">)
 type AppBarHeaderProps = React.ComponentProps<"header"> & {
   title?: string;
   subTitle?: string;
-  image?: React.ComponentProps<typeof Avatar>;
+  image?: React.ComponentProps<typeof UserAvatar>;
 };
 
 export function AppBarHeader({
@@ -40,7 +40,7 @@ export function AppBarHeader({
               <div className="w-full flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   {image && (
-                    <Avatar
+                    <UserAvatar
                       {...image}
                       className={{
                         ...image.className,
@@ -77,7 +77,7 @@ export function AppBarSubMenu({
 }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn("flex items-center px-6 py-3", className)}
+      className={cn("flex items-center px-6 py-3 w-full", className)}
       {...props}
     />
   );

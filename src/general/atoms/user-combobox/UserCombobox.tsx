@@ -14,9 +14,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useMediaQuery } from "@/hooks/use-media-query"; 
-import { cn } from "@/lib/utils"; 
-import { Avatar } from "@/general/atoms/avatar/Avatar";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { cn } from "@/lib/utils";
+import { UserAvatar } from "@/general/atoms/user-avatar/UserAvatar";
+import { Icon } from "@/design-tokens/icon/Icon";
 
 type Option = {
   value: string;
@@ -59,7 +60,7 @@ export function UserCombobox({
       return triggerPlaceholder;
     return (
       <div className="flex items-center gap-2 py-2 bg-transparent">
-        <Avatar name={selectedOption.label} profileUrl={selectedOption.profilePictureUrl ?? ""} className={{ avatar: "size-10 rounded-3xl", image: "rounded-3xl", fallback: "rounded-3xl" }} />
+        <UserAvatar name={selectedOption.label} profileUrl={selectedOption.profilePictureUrl ?? ""} className={{ avatar: "size-10 rounded-lg my-2", image: "rounded-lg", fallback: "rounded-3xl " }} />
         <div className="flex flex-col text-left leading-tight">
           <span className="text-sm font-medium">{selectedOption.label}</span>
           <span className="text-xs text-muted-foreground">{selectedOption.relation}</span>
@@ -71,10 +72,12 @@ export function UserCombobox({
   if (isDesktop) {
     return (
       <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger className="h-12 bg-transparent" asChild>
+        <PopoverTrigger className="h-12 bg-primary" asChild>
           <Button variant="ghost" className={cn("w-[200px] justify-between bg-transparent", triggerClassName)} {...props}>
             {renderSelectedOption()}
-            <ChevronsUpDown />
+            <Icon className={{container: "flex items-center justify-center p-2 border-white rounded-full bg-secondary-container text-on-secondary-container"}}>
+              <ChevronsUpDown />
+            </Icon>
           </Button>
         </PopoverTrigger>
         <PopoverContent className={cn("w-[250px] p-0 z-100 bg-surface-container", popoverClassName)} align="start">
@@ -89,7 +92,9 @@ export function UserCombobox({
       <DrawerTrigger className="h-12 bg-transparent" asChild>
         <Button variant="ghost" className={cn("w-[200px] justify-between bg-transparent", triggerClassName)} {...props}>
           {renderSelectedOption()}
-          <ChevronsUpDown />
+           <Icon className={{container: "flex items-center justify-center p-2 border-white rounded-full !bg-secondary-container text-on-secondary-container"}}>
+              <ChevronsUpDown />
+            </Icon>
         </Button>
       </DrawerTrigger>
       <DrawerContent>

@@ -14,7 +14,7 @@ export function Navbar({
       <div className="fixed bottom-0 inset-x-4 z-10 m-4">
         <nav
           className={cn(
-            "mx-auto flex h-12 max-w-xl justify-around rounded-full border-none bg-surface-container text-on-surface shadow-2xl",
+            "mx-auto flex h-12 max-w-xl justify-around rounded-full border-none bg-surface text-on-surface shadow-2xl",
             className,
           )}
           {...props}

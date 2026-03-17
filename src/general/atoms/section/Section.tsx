@@ -8,21 +8,26 @@ import { cn } from "@/lib/utils";
 
 export type TClassName = React.HTMLAttributes<HTMLElement>["className"];
 
+
 type SectionType = {
-  hTag?: HeadingTags;
-  title?: string;
-  buttonTitle?: string;
-  handleOnClick?: () => void;
-  scroll?: "none" | "vertical" | "horizontal";
-  asDiv?: boolean;
+  hTag?: HeadingTags
+  title?: string
+  buttonTitle?: string
+  buttonVariant?: React.ComponentProps<typeof Button>["variant"]
+  buttonClassName?: TClassName
+  handleOnClick?: () => void
+  scroll?: "none" | "vertical" | "horizontal"
+  asDiv?: boolean
+  dialog?: React.ReactNode
   className?: {
-    section?: TClassName;
-    title?: TClassName;
-    scrollArea?: TClassName;
-    scrollInnerContainer?: TClassName;
-    scrollBar?: TClassName;
-  };
-} & Omit<React.ComponentPropsWithoutRef<"section">, "className">;
+    section?: TClassName
+    title?: TClassName
+    scrollArea?: TClassName
+    scrollInnerContainer?: TClassName
+    scrollBar?: TClassName
+    secondarySection?: TClassName
+  }
+} & Omit<React.ComponentPropsWithoutRef<"section">, "className">
 
 export function Section({
   hTag = "h2",
@@ -31,11 +36,14 @@ export function Section({
   asDiv = false,
   className,
   children,
+  dialog,
   buttonTitle,
+  buttonVariant = "primary",
+  buttonClassName,
   handleOnClick,
   ...props
 }: SectionType) {
-  const Comp = asDiv ? "div" : "section";
+  const Comp = asDiv ? "div" : "section"
 
   return (
     <Comp
@@ -48,31 +56,42 @@ export function Section({
       )}
       {...props}
     >
-      {title
-        ? (
-            <div className="flex justify-between items-center pb-2 mb-3 border-b-[1.5px] border-b-ath-outline/15">
-              <Heading
-                hTag={hTag}
-                className={cn(
-                  "text-2xl",
-                  scroll === "none" && "mx-0",
-                  scroll === "vertical" && "mx-4",
-                  scroll === "horizontal" && "mx-4 mb-4",
-                  className?.title,
-                )}
-              >
-                {title}
-              </Heading>
-              {buttonTitle
-                ? (
-                    <Button className="mx-4" onClick={handleOnClick}>
-                      {buttonTitle}
-                    </Button>
-                  )
-                : null}
-            </div>
-          )
-        : null}
+      {title && (
+        <div
+          className={cn(
+            "flex justify-between items-center pb-2 mb-3 border-b-[1.5px] border-b-ath-outline/15",
+            className?.secondarySection
+          )}
+        >
+          <Heading
+            hTag={hTag}
+            className={cn(
+              "text-2xl",
+              scroll === "none" && "mx-0",
+              scroll === "vertical" && "mx-4",
+              scroll === "horizontal" && "mx-4 mb-4",
+              className?.title
+            )}
+          >
+            {title}
+          </Heading>
+          <div className="flex items-center gap-2">
+            {dialog ? (
+              dialog
+            ) : (
+              buttonTitle && (
+                <Button
+                  variant={buttonVariant}
+                  className={cn("mx-4", buttonClassName)}
+                  onClick={handleOnClick}
+                >
+                  {buttonTitle}
+                </Button>
+              )
+            )}
+          </div>
+        </div>
+      )}
 
       {scroll === "none" && children}
 
@@ -93,7 +112,7 @@ export function Section({
           <div
             className={cn(
               "flex w-max gap-5 mb-4 mx-4",
-              className?.scrollInnerContainer,
+              className?.scrollInnerContainer
             )}
           >
             {children}
@@ -105,5 +124,5 @@ export function Section({
         </ScrollArea>
       )}
     </Comp>
-  );
+  )
 }

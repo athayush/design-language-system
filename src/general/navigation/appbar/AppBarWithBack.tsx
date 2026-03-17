@@ -5,13 +5,13 @@ import { ChevronLeft } from "lucide-react";
 import { Button } from "@/general/atoms/button/Button"; 
 
 import { AppBar } from "./Appbar"; 
-import { Avatar } from "@/general/atoms/avatar/Avatar"; 
+import { UserAvatar } from "@/general/atoms/user-avatar/UserAvatar"; 
 import { cn } from "@/lib/utils";
 
 type AppBarWithBackProps = {
   title?: string;
   subTitle?: string;
-  image?: React.ComponentProps<typeof Avatar>;
+  image?: React.ComponentProps<typeof UserAvatar>;
   icon?: LucideIcon;
 } & React.ComponentProps<"nav">;
 
@@ -42,7 +42,7 @@ export function AppBarWithBack({
           ? (
               <div className="flex items-center w-full gap-3">
                 {image && (
-                  <Avatar
+                  <UserAvatar
                     {...image}
                     className={{
                       ...image.className,
