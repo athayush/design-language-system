@@ -2,6 +2,7 @@ import { Button } from "@/general/atoms/button/Button";
 import { Drawer } from "@/general/atoms/drawer/Drawer"
 import { Section } from "@/general/atoms/section/Section";
 import type { SpecialityCardProps } from "@/homepage/cards/speciality-card/SpecialityCard";
+import { AutoCompleteSearchBar } from "@/homepage/searchbar/AutoCompleteSearchBar";
 import { useState } from "react";
 
 const specialities: SpecialityCardProps[] = [
@@ -47,7 +48,7 @@ const specialities: SpecialityCardProps[] = [
   },
   {
     url: "#",
-    image : "https://helma.healthians.com/stationery/mailer-assets/641964e0538e5.png",
+    image: "https://helma.healthians.com/stationery/mailer-assets/641964e0538e5.png",
     title: "Abdominal Pain"
   },
   {
@@ -61,27 +62,30 @@ function SpecialityDrawer() {
   const [open, setOpen] = useState(false);
   return (
     <Drawer
-    trigger={<Button variant={"outline"} className="text-xs rounded-xl">View All</Button>}
+      trigger={<Button variant={"outline"} className="text-xs rounded-xl">View All</Button>}
       title="All Specialities"
       description="Choose speciality according to your health needs"
       open={open}
       onOpenChange={setOpen}
       className={{
-        content: "h-[75vh]",
+        content: "h-[75vh] md:w-1/2 mx-auto",
         scroll: "h-full max-h-[calc(90vh-150px)]",
       }}
     >
+      <div className="m-4">
+        <AutoCompleteSearchBar />
+      </div>
       <Section asDiv className={{ section: "flex flex-col   divide-primary" }}>
-      {/* <div className=""> */}
+        {/* <div className=""> */}
         {specialities.map(speciality => (
-          <a href={speciality.url} className="border-b border-primary/10" key={speciality.title}>
-          <div className="flex items-center gap-4 py-2" >
-            <img src={speciality.image} alt={speciality.title} className="rounded-full shadow-sm size-13" />
-            <p className="font-semibold text-primary/90">{speciality.title}</p>
-          </div>
+          <a href={speciality.url} className="border-b border-primary/10 hover:bg-secondary/10" key={speciality.title}>
+            <div className="flex items-center gap-4 py-2" >
+              <img src={speciality.image} alt={speciality.title} className="rounded-full shadow-sm size-13" />
+              <p className="font-semibold text-primary/90">{speciality.title}</p>
+            </div>
           </a>
         ))}
-      {/* </div> */}
+        {/* </div> */}
       </Section>
 
     </Drawer>

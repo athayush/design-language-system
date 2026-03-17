@@ -14,7 +14,7 @@
   --card-foreground: hsl(222.2 84% 4.9%);
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(222.2 84% 4.9%);
-  --primary: hsl(222.2 47.4% 11.2%); 
+  --primary: hsl(222.2 47.4% 11.2%);
   --primary-foreground: hsl(210 40% 98%);
   --secondary: hsl(210 40% 96.1%);
   --secondary-foreground: hsl(222.2 47.4% 11.2%);
@@ -102,8 +102,8 @@
   --surface-bright: light-dark(#f9f9ff, #37393e);
   --surface-container-lowest: light-dark(oklch(from #fafafb 97% c h), #0c0e13);
   --surface-container-low: light-dark(#fafafb, #0c0e13);
-  --surface-container: light-dark(from #E0EEFF, #1e1f25);
-  --surface-container-high: light-dark(oklch(from #fafafb 90% 4% calc(h + 0.04)), #282a2f);
+  --surface-container: light-dark(from #fcfdff, #1e1f25);
+  --surface-container-high: light-dark(oklch(from #fafaff 90% 4% calc(0.04)), #282a2f);
   --surface-container-highest: light-dark(oklch(from #fafafb 82% 6% calc(h + -15)), #33353a);
 }
 
@@ -245,6 +245,30 @@
   --color-surface-container-high: var(--surface-container-high);
   --color-surface-container-highest: var(--surface-container-highest);
 
+
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+
   @keyframes accordion-down {
     from {
       height: 0;
@@ -265,16 +289,18 @@
     }
   }
 
-  --animate-aurora: aurora 60s linear infinite
-;
+  --animate-aurora: aurora 60s linear infinite;
+
   @keyframes aurora {
-  from {
-    backgroundPosition: 50% 50%, 50% 50%;
+    from {
+      backgroundPosition: 50% 50%, 50% 50%;
     }
-  to {
-    backgroundPosition: 350% 50%, 350% 50%;
+
+    to {
+      backgroundPosition: 350% 50%, 350% 50%;
     }
-  }}
+  }
+}
 
 @keyframes slideIn {
   0% {

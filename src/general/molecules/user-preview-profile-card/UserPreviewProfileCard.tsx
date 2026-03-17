@@ -18,7 +18,7 @@ type UserPreviewProfileCardProps = {
   healthScore?: number;
 };
 
-export function UserPreviewProfileCard({ children, name, username, email, avatar = "/public/images/placeholder-lg.svg", subscription = "Free", healthScore = 0 }: UserPreviewProfileCardProps) {
+export function UserPreviewProfileCard({ children, name, username, email, avatar = "/images/placeholder-lg.svg", subscription = "Free", healthScore = 0 }: UserPreviewProfileCardProps) {
   return (
     <Card className="relative shadow rounded-lg border-none bg-primary-container text-on-primary-container m-4 py-4 inset-shadow">
       <CardContent className="px-4">

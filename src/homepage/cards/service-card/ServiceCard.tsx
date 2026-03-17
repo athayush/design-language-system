@@ -24,7 +24,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
     const isTailwindClass = bgColor.startsWith("bg-") || bgColor.startsWith("bg[");
 
     return (
-        <a href={url} className="group max-w-[200px] block">
+        <a href={url} className="group w-full md:w-[200px] h-full block">
             <div
                 className={cn(
                     "rounded-xl relative overflow-hidden shadow-sm transition-all duration-300 border border-gray-200 cursor-pointer flex flex-col",
@@ -34,7 +34,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
             >
                 <div
                     className={cn(
-                        "relative w-full h-32 flex items-center justify-center p-4",
+                        "relative w-full h-full flex items-center justify-center p-4",
                         isTailwindClass ? bgColor : ""
                     )}
                     style={!isTailwindClass ? { backgroundColor: bgColor } : {}}
@@ -52,7 +52,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
                     {feature && (
                         <Badge
                             dot
-                            className={{ badge: "mt-2 rounded-2xl absolute right-2 -top-0 text-[8px] font-medium" }}
+                            className={{ badge: "mt-2 rounded-2xl absolute right-2 -top-0 text-[10px] font-medium" }}
                         >
                             {feature}
                         </Badge>

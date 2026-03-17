@@ -125,7 +125,7 @@ export function CustomCarousel({ items, initialScroll = 0 }: CarouselProps) {
                   },
                 }}
                 key={`card${index}`}
-                className="rounded-3xl  last:pr-[5%] md:last:pr-[33%]"
+                className="rounded-3xl  last:pr-[3%]"
               >
                 {item}
               </motion.div>
@@ -186,6 +186,7 @@ export function CarouselCard({
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   useOutsideClick(containerRef, () => handleClose());

@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { Play } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
+import { Button } from "@/general/atoms/button/Button"
 
 
 export interface Card {
@@ -24,52 +24,13 @@ export interface Card {
       id: 1,
       title: "Summer Opening",
       image:
-        "https://res.cloudinary.com/dyzxnud9z/image/upload/w_400,ar_1:1,c_fill,g_auto/v1758210208/smoothui/summer-opening.webp",
+        "https://www.athayush.com/wp-content/uploads/2025/11/Ambuj-Profile-headshot_Square.png",
       content:
         "Join us for the Summer Opening event, where we celebrate the start of a vibrant season filled with art and culture.",
       author: {
         name:"Eduardo Calvo",
         role: "CEO & Founder",
         image: "https://images.unsplash.com/photo-1761165307483-8f293ad3f1e9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1287",
-      },
-    },
-    {
-      id: 2,
-      title: "Fashion",
-      image:
-        "https://res.cloudinary.com/dyzxnud9z/image/upload/w_400,ar_1:1,c_fill,g_auto/v1758210208/smoothui/fashion.webp",
-      content:
-        "Explore the latest trends in fashion at our exclusive showcase, featuring renowned designers and unique styles.",
-      author: {
-        name: "Sarah Chen",
-        role: "Head of Design",
-        image: "https://images.unsplash.com/photo-1761165307483-8f293ad3f1e9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1287",
-      },
-    },
-    {
-      id: 3,
-      title: "Gallery Art",
-      image:
-        "https://res.cloudinary.com/dyzxnud9z/image/upload/w_400,ar_1:1,c_fill,g_auto/v1758210809/smoothui/galleryart.webp",
-      content:
-        "Immerse yourself in the world of art at our gallery, showcasing stunning pieces from emerging and established artists.",
-      author: {
-        name: "Marcus Johnson",
-        role: "Lead Developer",
-        image: "https://images.unsplash.com/photo-1761165307483-8f293ad3f1e9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1287"
-      },
-    },
-    {
-      id: 4,
-      title: "Dreams",
-      image:
-        "https://res.cloudinary.com/dyzxnud9z/image/upload/w_400,ar_1:1,c_fill,g_auto/v1758210809/smoothui/dreams.webp",
-      content:
-        "Join us on a journey through dreams, exploring the subconscious and the art of dreaming.",
-      author: {
-        name:  "Emily Rodriguez",
-        role:  "Product Manager",
-        image: "https://images.unsplash.com/photo-1761165307483-8f293ad3f1e9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1287"
       },
     },
   ]
@@ -129,7 +90,7 @@ export function ExpandableCards({
     >
       <div
         ref={scrollRef}
-        className="scrollbar-hide mx-auto flex overflow-x-auto pb-4"
+        className="scrollbar-hide flex overflow-x-auto pb-4"
         style={{
           scrollSnapType: "x mandatory",
           scrollPaddingLeft: "20%",
@@ -145,14 +106,14 @@ export function ExpandableCards({
               scrollSnapAlign: "start",
             }}
             animate={{
-              width: selectedCard === card.id ? "350px" : "200px",
+              width: selectedCard === card.id ? "300px" : "200px",
             }}
             transition={{
               duration: 0.5,
             }}
             onClick={() => handleCardClick(card.id)}
           >
-            <div className="relative h-full w-[200px]">
+            <div className="relative h-full  w-[200px]">
               <img
                 src={card.image || "/placeholder.svg"}
                 alt={card.title}
@@ -163,16 +124,6 @@ export function ExpandableCards({
               <div className="absolute inset-0 bg-black/20" />
               <div className="absolute inset-0 flex flex-col justify-between p-6 text-white">
                 <h2 className="text-2xl font-bold">{card.title}</h2>
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    aria-label="Play video"
-                    className="bg-background/30 flex h-12 w-12 items-center justify-center rounded-full backdrop-blur-sm transition-transform hover:scale-110"
-                  >
-                    <Play className="h-6 w-6 text-white" />
-                  </button>
-                  <span className="text-sm font-medium">Play video</span>
-                </div>
               </div>
             </div>
             <AnimatePresence mode="popLayout">
@@ -185,7 +136,7 @@ export function ExpandableCards({
                     duration: 0.5,
                     opacity: { duration: 0.3, delay: 0.2 },
                   }}
-                  className="bg-background absolute top-0 right-12 h-full"
+                  className="bg-background absolute top-0 right-0 h-full"
                 >
                   <motion.div
                     className="flex h-full flex-col justify-between p-8"
@@ -194,30 +145,11 @@ export function ExpandableCards({
                     exit={{ opacity: 0, x: 20, filter: "blur(5px)" }}
                     transition={{ delay: 0.4, duration: 0.3 }}
                   >
-                    <p className="text-primary">
-                      {card.content}
-                    </p>
-                    {card.author && (
-                      <div className="mt-4 flex items-center gap-3">
-                        <div className="bg-primary h-12 w-12 overflow-hidden rounded-full border">
-                          <img
-                            src={card.author.image}
-                            alt={card.author.name}
-                            width={48}
-                            height={48}
-                            className="h-full w-full object-cover"
-                          />
-                        </div>
-                        <div>
-                          <p className="text-foreground font-semibold">
-                            {card.author.name}
-                          </p>
-                          <p className="text-primary-foreground text-xs">
-                            {card.author.role}
-                          </p>
-                        </div>
-                      </div>
-                    )}
+                    <p className="text-primary line-clamp-6">
+                      Health Experts Bio</p>
+                      <Button className="ml-auto" asChild>
+                        <a href="#">View Profile</a>
+                      </Button>
                   </motion.div>
                 </motion.div>
               )}

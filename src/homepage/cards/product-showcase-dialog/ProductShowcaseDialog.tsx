@@ -10,7 +10,6 @@ import {
     MorphingDialogContainer,
 } from "@/components/ui/morphin-dialog"
 import { Button } from "@/general/atoms/button/Button";
-import {  ShoppingCart } from 'lucide-react';
 
 function ProductShowcaseDialog() {
     return (
@@ -25,29 +24,32 @@ function ProductShowcaseDialog() {
                 style={{
                     borderRadius: '12px',
                 }}
-                className='flex max-w-[270px] flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900'
+                className='flex w-full md:w-sm flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900'
             >
                 <MorphingDialogImage
-                    src='https://motion-primitives.com/eb-27-lamp-edouard-wilfrid-buquet.jpg'
-                    alt='A desk lamp designed by Edouard Wilfrid Buquet in 1925. It features a double-arm design and is made from nickel-plated brass, aluminium and varnished wood.'
-                    className='max-h-48 w-full object-cover'
+                    src='/hibiscus4.png'
+                    alt='hibiscus flower'
+                    className='h-48 w-full object-cover'
                 />
-                <div className='flex grow flex-row items-end justify-between px-3 py-2'>
-                    <div>
-                        <MorphingDialogTitle className='text-zinc-950 text-left dark:text-zinc-50'>
-                            Table Lamp
-                        </MorphingDialogTitle>
-                        <MorphingDialogSubtitle className='text-zinc-700 text-sm text-left line-clamp-1 dark:text-zinc-400'>
-                            Best Lamp To Buy
-                        </MorphingDialogSubtitle>
+                <div className="p-4 flex flex-col gap-2">
+                    <MorphingDialogTitle className='text-primary truncate text-left text-lg font-semibold leading-5 mb-2 '>
+                        Hibiscus Tea - 50gm - Hibiscus Flower
+                    </MorphingDialogTitle>
+                    <MorphingDialogSubtitle className='text-zinc-700 text-sm text-left line-clamp-1 dark:text-zinc-400'>
+                        Step into balance and vitality with Butterfly Pea Flower Tea. A powerhouse of natural antioxidants, this soothing blue brew helps protect your cells, supports a healthy metabolism, aids weight management, and is believed to sharpen focus and memory. A calming ritual for body and mind.
+                    </MorphingDialogSubtitle>
+                    <div className="flex items-center justify-center gap-6 mt-4">
+                        <p className="text-2xl md:text-3xl font-bold text-left text-primary">
+                            ₹
+                            600
+                            {" "}
+                            <span className="line-through font-normal text-lg md:text-xl">
+                                ₹
+                                360
+                            </span>
+                        </p>
+                    <Button>Buy Now</Button>
                     </div>
-                    <Button
-                        type='button'
-                        className='relative ml-1 flex h-6 w-6 shrink-0 scale-100 select-none appearance-none items-center justify-center rounded-lg border border-zinc-950/10 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-800 focus-visible:ring-2 active:scale-[0.98] dark:border-zinc-50/10 dark:bg-zinc-900 dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:focus-visible:ring-zinc-500'
-                        aria-label='Open dialog'
-                    >
-                        <ShoppingCart size={12} />
-                    </Button>
                 </div>
             </MorphingDialogTrigger>
             <MorphingDialogContainer>
@@ -58,17 +60,19 @@ function ProductShowcaseDialog() {
                     className='pointer-events-auto mx-4 relative flex h-auto w-full flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900 sm:w-[500px]'
                 >
                     <MorphingDialogImage
-                        src='https://motion-primitives.com/eb-27-lamp-edouard-wilfrid-buquet.jpg'
-                        alt='A desk lamp designed by Edouard Wilfrid Buquet in 1925. It features a double-arm design and is made from nickel-plated brass, aluminium and varnished wood.'
+                        src='/hibiscus4.png'
+                        alt='Hibiscus Flower'
                         className='h-full w-full'
                     />
                     <div className='p-6'>
                         <MorphingDialogTitle className='text-2xl text-zinc-950 dark:text-zinc-50'>
-                            EB27
+                            Blue Tea - 50gm - Butterfly Pea (Aparajita FLower)
                         </MorphingDialogTitle>
                         <MorphingDialogSubtitle className='text-zinc-700 dark:text-zinc-400'>
-                            Edouard Wilfrid Buquet
+                            1 Unit - 50g
                         </MorphingDialogSubtitle>
+                        <p className="text-2xl font-semibold text-left  text-primary">₹360 <span className="line-through">₹600</span></p>
+
                         <MorphingDialogDescription
                             disableLayoutAnimation
                             variants={{
@@ -83,18 +87,14 @@ function ProductShowcaseDialog() {
                                 unfortunately a mystery.
                             </p>
                             <p className='text-zinc-500'>
-                                Research conducted in the 1970s revealed that he’d designed the
+                                Research conducted in the 1970s revealed that he'd designed the
                                 “EB 27” double-arm desk lamp in 1925, handcrafting it from
                                 nickel-plated brass, aluminium and varnished wood.
                             </p>
-                            <a
-                                className='mt-2 inline-flex text-zinc-500 underline'
-                                href='https://www.are.na/block/12759029'
-                                target='_blank'
-                                rel='noopener noreferrer'
-                            >
-                                Are.na block
-                            </a>
+                            <div className="flex gap-4 items-center mt-4">
+                                <Button variant={"outline"} className="w-1/2">More Details</Button>
+                                <Button className="w-1/2">Buy Now</Button>
+                            </div>
                         </MorphingDialogDescription>
                     </div>
                     <MorphingDialogClose className='text-zinc-50' />

@@ -41,7 +41,7 @@ function ServiceLayout({ AppBar, children }: ServiceLayoutProps) {
                     <Share2 size={20} />
                 </Button>
             </AppBarWithBack>
-            <Section className={{ section: "space-y-6 mx-0" }}>
+              <Section className={{section:"w-full space-y-6 md:max-w-3xl bg-surface-bright lg:max-w-4xl mx-auto"}}>
                 {children}
             </Section>
         </Layout>

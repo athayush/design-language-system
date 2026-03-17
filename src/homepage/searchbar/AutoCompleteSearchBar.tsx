@@ -1,10 +1,9 @@
 import { Search } from "lucide-react";
 import React, { useCallback, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils"; 
+import { cn } from "@/lib/utils";
 // Simulated API call
 async function fetchSuggestions(query: string): Promise<string[]> {
   await new Promise(resolve => setTimeout(resolve, 300)); // Simulate network delay
@@ -159,10 +158,10 @@ function AutoCompleteSearchBar({
         <Button
           size="icon"
           variant="ghost"
-          className="absolute left-0 top-0 h-full hover:bg-primary bg-primary overflow-hidden"
+          className="absolute left-0 top-0 "
           aria-label="Search"
         >
-          <Search className="h-4 w-4 text-on-primary" />
+          <Search className="text-primary" />
         </Button>
         <div className="absolute right-0 top-0">{children}</div>
       </div>
@@ -185,7 +184,7 @@ function AutoCompleteSearchBar({
             <li
               key={suggestion}
               className={`px-4 py-2 cursor-pointer hover:bg-muted ${index === selectedIndex ? "bg-muted" : ""
-              }`}
+                }`}
               onClick={() => handleSuggestionClick(suggestion)}
               role="option"
               aria-selected={index === selectedIndex}
@@ -199,5 +198,6 @@ function AutoCompleteSearchBar({
   );
 }
 
-export {AutoCompleteSearchBar
+export {
+  AutoCompleteSearchBar
 }

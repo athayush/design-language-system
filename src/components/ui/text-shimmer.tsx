@@ -3,7 +3,7 @@ import React, { useMemo, type JSX } from 'react';
 import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 
-interface TextShimmerProps {
+type TextShimmerProps = {
   children: string;
   as?: React.ElementType;
   className?: string;

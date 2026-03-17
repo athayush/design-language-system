@@ -1,4 +1,4 @@
-import { CircleUserRound, Clock, Home, Store } from "lucide-react";
+import { CircleUserRound, Clock, Home, Store, HeartHandshake } from "lucide-react";
 import { Navbar, NavbarItem } from "./Navbar";
 import { useState } from "react";
 
@@ -12,6 +12,9 @@ function AthCareNavbar() {
       </NavbarItem>
       <NavbarItem icon={Store} isActive={active === "store"} onClick={() => setActive("store")}>
         Store
+      </NavbarItem>
+      <NavbarItem icon={HeartHandshake} isActive={active === "care"} onClick={() => setActive("care")}>
+        Care
       </NavbarItem>
       <NavbarItem icon={Clock} isActive={active === "tracker"} onClick={() => setActive("tracker")}>
         Tracker

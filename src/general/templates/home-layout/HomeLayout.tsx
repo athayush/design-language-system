@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "../layout/Layout";
 import { AppBar, AppBarHeader } from "@/general/navigation/appbar/Appbar";
 import { AthCareNavbar } from "@/general/navigation/navbar/AthcareNavbar";
-import { Icon } from "@/design-tokens/icon/Icon";
-import { Bell } from "lucide-react";
+import { Section } from "@/general/atoms/section/Section";
 
 type HomeLayoutProps = {
     children?: React.ReactNode;
@@ -23,7 +22,7 @@ function HomeLayout({ children, title = "AthAyush", subTitle }: HomeLayoutProps)
         <Layout>
             <AppBar>
                 <AppBarHeader title={title} subTitle={subTitle}>
-                    <Icon icon={Bell} className={{container: "bg-transparent border-primary shadow rounded-lg"}} />
+                    {/* <Icon icon={Bell} className={{ container: "bg-transparent border-primary shadow rounded-lg" }} /> */}
                     {user.appRoles.includes("admin") && (
                         <Button asChild>
                             <a href="/admin">Admin Dashboard</a>
@@ -31,7 +30,9 @@ function HomeLayout({ children, title = "AthAyush", subTitle }: HomeLayoutProps)
                     )}
                 </AppBarHeader>
             </AppBar>
-            {children}
+            <Section className={{section:"w-full space-y-6 md:max-w-3xl bg-surface-bright lg:max-w-4xl mx-auto"}}>
+                {children}
+            </Section>
             <AthCareNavbar />
         </Layout>
     );

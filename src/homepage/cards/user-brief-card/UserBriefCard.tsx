@@ -1,8 +1,8 @@
 import type { TClassName } from "@/general/atoms/section/Section";
 import { CheckCircle2, PlusIcon } from "lucide-react";
 import { useState } from "react";
-import { Section } from "@/general/atoms/section/Section"; 
-import { Tooltip } from "@/general/atoms/tooltip/Tooltip"; 
+import { Section } from "@/general/atoms/section/Section";
+import { Tooltip } from "@/general/atoms/tooltip/Tooltip";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -13,8 +13,8 @@ import {
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { cn } from "@/lib/utils"; 
-import { UserAvatar } from "@/general/atoms/user-avatar/UserAvatar"; 
+import { cn } from "@/lib/utils";
+import { UserAvatar } from "@/general/atoms/user-avatar/UserAvatar";
 
 export type subscriber = {
     id: string;
@@ -125,12 +125,14 @@ function UserBriefCard({ subscribers, className }: UserBriefCardProps) {
                         value={selectedUser.progress}
                         className={cn("h-4 bg-secondary-container/70", getDynamicClass(selectedUser.progress))}
                     />
-                    <small className="text-on-surface-variant text-xs">
+                    <small className={`${selectedUser.progress === 0 ? "text-red-700" : selectedUser.progress < 50 ? "text-orange-500" : "text-green-700"} italic text-xs`}>
                         *
                         {" "}
-                        {selectedUser.progress < 50
-                            ? "Need to improve your health habits."
-                            : "You're doing well. Keep it up!"}
+                        {selectedUser.progress === 0
+                            ? "Unknown"
+                            : selectedUser.progress < 50
+                                ? "Need to improve your health habits."
+                                : "You're doing well. Keep it up!"}
                     </small>
                 </CardContent>
             </Card>

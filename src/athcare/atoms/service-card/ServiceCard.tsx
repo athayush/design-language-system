@@ -99,7 +99,7 @@ function ServiceCard({
                         </div>
                         <div className="flex items-center gap-3 border rounded-xl shadow-xs py-2 px-3">
                             <Avatar className="size-10 cursor-pointer">
-                                <AvatarImage src="/public/images/placeholder-lg.svg " />
+                                <AvatarImage src="/images/placeholder-lg.svg " />
                                 <AvatarFallback className="text-primary text-xs">
                                     AK
                                 </AvatarFallback>
@@ -269,7 +269,6 @@ function ServiceCard({
                     </div>
                 </TimelineContent>
                 <div className="text-end mb-2">
-    
                         <DoctorDetails serviceDetailId={+service.id!}>
                             <Button>View Details</Button>
                         </DoctorDetails>
